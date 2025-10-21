@@ -1,0 +1,84 @@
+### EmployeeLookup API Tests
+
+@baseUrl = https://localhost:7063/api
+@token = {{authToken}}
+
+### Authentication - Get Token First
+POST {{baseUrl}}/authentication/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "password123"
+}
+
+### Get All Employee Lookup Records
+GET {{baseUrl}}/employeelookup
+Authorization: Bearer {{token}}
+
+### Get Employee Lookup by Personnel Number
+GET {{baseUrl}}/employeelookup/12345
+Authorization: Bearer {{token}}
+
+### Search Employee Lookup Records
+GET {{baseUrl}}/employeelookup/search/john
+Authorization: Bearer {{token}}
+
+### Get Employee Lookup Records by Race
+GET {{baseUrl}}/employeelookup/race/African
+Authorization: Bearer {{token}}
+
+### Get Employee Lookup Records by Gender
+GET {{baseUrl}}/employeelookup/gender/Male
+Authorization: Bearer {{token}}
+
+### Get Employee Lookup Records by EE Level
+GET {{baseUrl}}/employeelookup/ee-level/Senior
+Authorization: Bearer {{token}}
+
+### Get Employee Lookup Records by EE Category
+GET {{baseUrl}}/employeelookup/ee-category/Management
+Authorization: Bearer {{token}}
+
+### Get Employee Lookup Records with Disability
+GET {{baseUrl}}/employeelookup/disability/true
+Authorization: Bearer {{token}}
+
+### Create New Employee Lookup Record
+POST {{baseUrl}}/employeelookup
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "personnelNumber": "EMP001",
+  "firstName": "John",
+  "lastName": "Smith",
+  "knownName": "Johnny",
+  "initials": "J.S.",
+  "race": "African",
+  "gender": "Male",
+  "disability": false,
+  "eeLevel": "Senior",
+  "eeCategory": "Professional"
+}
+
+### Update Employee Lookup Record
+PUT {{baseUrl}}/employeelookup/EMP001
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "firstName": "John",
+  "lastName": "Smith",
+  "knownName": "Johnny",
+  "initials": "J.S.",
+  "race": "African",
+  "gender": "Male",
+  "disability": false,
+  "eeLevel": "Senior",
+  "eeCategory": "Management"
+}
+
+### Delete Employee Lookup Record
+DELETE {{baseUrl}}/employeelookup/EMP001
+Authorization: Bearer {{token}}

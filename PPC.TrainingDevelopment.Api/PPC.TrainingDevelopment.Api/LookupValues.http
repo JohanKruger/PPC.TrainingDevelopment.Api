@@ -1,0 +1,150 @@
+### LookupValues API Test File
+
+@baseUrl = https://localhost:7001/api
+@token = <insert_jwt_token_here>
+
+### 1. Get all lookup values
+GET {{baseUrl}}/lookupvalues
+Authorization: Bearer {{token}}
+
+### 2. Create a new lookup value
+POST {{baseUrl}}/lookupvalues
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "lookupType": "Department",
+  "value": "Information Technology",
+  "code": "IT",
+  "sortOrder": 1,
+  "isActive": true
+}
+
+### 3. Create a child lookup value
+POST {{baseUrl}}/lookupvalues
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "lookupType": "Department",
+  "value": "Software Development",
+  "code": "SOFTDEV",
+  "parentId": 1,
+  "sortOrder": 1,
+  "isActive": true
+}
+
+### 4. Get lookup value by ID
+GET {{baseUrl}}/lookupvalues/1
+Authorization: Bearer {{token}}
+
+### 5. Get lookup values by type
+GET {{baseUrl}}/lookupvalues/type/Department
+Authorization: Bearer {{token}}
+
+### 6. Get active lookup values by type
+GET {{baseUrl}}/lookupvalues/type/Department/active
+Authorization: Bearer {{token}}
+
+### 7. Get children of a parent lookup
+GET {{baseUrl}}/lookupvalues/parent/1/children
+Authorization: Bearer {{token}}
+
+### 8. Update a lookup value
+PUT {{baseUrl}}/lookupvalues/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "lookupType": "Department",
+  "value": "Information Technology Updated",
+  "code": "IT",
+  "sortOrder": 1,
+  "isActive": true
+}
+
+### 9. Delete a lookup value
+DELETE {{baseUrl}}/lookupvalues/2
+Authorization: Bearer {{token}}
+
+###
+### Sample data to populate lookup values
+###
+
+### Create Employee Status lookup values
+POST {{baseUrl}}/lookupvalues
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "lookupType": "EmployeeStatus",
+  "value": "Active",
+  "code": "ACTIVE",
+  "sortOrder": 1,
+  "isActive": true
+}
+
+###
+POST {{baseUrl}}/lookupvalues
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "lookupType": "EmployeeStatus",
+  "value": "Inactive",
+  "code": "INACTIVE",
+  "sortOrder": 2,
+  "isActive": true
+}
+
+###
+POST {{baseUrl}}/lookupvalues
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "lookupType": "EmployeeStatus",
+  "value": "Terminated",
+  "code": "TERM",
+  "sortOrder": 3,
+  "isActive": true
+}
+
+### Create Gender lookup values
+POST {{baseUrl}}/lookupvalues
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "lookupType": "Gender",
+  "value": "Male",
+  "code": "M",
+  "sortOrder": 1,
+  "isActive": true
+}
+
+###
+POST {{baseUrl}}/lookupvalues
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "lookupType": "Gender",
+  "value": "Female",
+  "code": "F",
+  "sortOrder": 2,
+  "isActive": true
+}
+
+###
+POST {{baseUrl}}/lookupvalues
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "lookupType": "Gender",
+  "value": "Other",
+  "code": "O",
+  "sortOrder": 3,
+  "isActive": true
+}

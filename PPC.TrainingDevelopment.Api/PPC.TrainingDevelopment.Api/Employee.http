@@ -1,0 +1,81 @@
+@baseUrl = https://localhost:7071/api
+@token = your_jwt_token_here
+
+### Authentication (Get Token First)
+POST {{baseUrl}}/authentication/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "password"
+}
+
+### Get All Employees
+GET {{baseUrl}}/employee
+Authorization: Bearer {{token}}
+
+### Get Employee by Personnel Number (Anonymous access)
+GET {{baseUrl}}/employee/EMP001
+
+### Search Employees
+GET {{baseUrl}}/employee/search/John
+Authorization: Bearer {{token}}
+
+### Get Employees by Race
+GET {{baseUrl}}/employee/race/White
+Authorization: Bearer {{token}}
+
+### Get Employees by Gender
+GET {{baseUrl}}/employee/gender/Male
+Authorization: Bearer {{token}}
+
+### Get Employees by EE Level
+GET {{baseUrl}}/employee/ee-level/Senior
+Authorization: Bearer {{token}}
+
+### Get Employees by EE Category
+GET {{baseUrl}}/employee/ee-category/Management
+Authorization: Bearer {{token}}
+
+### Get Employees with Disability
+GET {{baseUrl}}/employee/disability/true
+Authorization: Bearer {{token}}
+
+### Create New Employee
+POST {{baseUrl}}/employee
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "personnelNumber": "EMP001",
+  "firstName": "John",
+  "lastName": "Doe",
+  "knownName": "Johnny",
+  "initials": "J.D.",
+  "race": "White",
+  "gender": "Male",
+  "disability": false,
+  "eeLevel": "Senior",
+  "eeCategory": "Management"
+}
+
+### Update Employee
+PUT {{baseUrl}}/employee/EMP001
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "firstName": "John",
+  "lastName": "Smith",
+  "knownName": "Johnny",
+  "initials": "J.S.",
+  "race": "White",
+  "gender": "Male",
+  "disability": false,
+  "eeLevel": "Senior",
+  "eeCategory": "Management"
+}
+
+### Delete Employee
+DELETE {{baseUrl}}/employee/EMP001
+Authorization: Bearer {{token}}

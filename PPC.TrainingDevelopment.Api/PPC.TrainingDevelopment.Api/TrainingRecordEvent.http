@@ -1,0 +1,94 @@
+### Training Record Event API Endpoints
+
+@baseUrl = https://localhost:7098/api
+@token = YOUR_JWT_TOKEN_HERE
+
+### Get all training record events
+GET {{baseUrl}}/TrainingRecordEvent
+Authorization: Bearer {{token}}
+
+### Get training record event by ID
+GET {{baseUrl}}/TrainingRecordEvent/1
+Authorization: Bearer {{token}}
+
+### Get training record events by training event ID
+GET {{baseUrl}}/TrainingRecordEvent/training-event/1
+Authorization: Bearer {{token}}
+
+### Get training record events by personnel number
+GET {{baseUrl}}/TrainingRecordEvent/personnel/12345678
+Authorization: Bearer {{token}}
+
+### Get training record events by date range
+GET {{baseUrl}}/TrainingRecordEvent/date-range?startDate=2024-01-01&endDate=2024-12-31
+Authorization: Bearer {{token}}
+
+### Get training record events with evidence
+GET {{baseUrl}}/TrainingRecordEvent/with-evidence
+Authorization: Bearer {{token}}
+
+### Get training record events without evidence
+GET {{baseUrl}}/TrainingRecordEvent/without-evidence
+Authorization: Bearer {{token}}
+
+### Get total costs by training event ID
+GET {{baseUrl}}/TrainingRecordEvent/costs/training-event/1
+Authorization: Bearer {{token}}
+
+### Get total costs by personnel number
+GET {{baseUrl}}/TrainingRecordEvent/costs/personnel/12345678
+Authorization: Bearer {{token}}
+
+### Get total costs by date range
+GET {{baseUrl}}/TrainingRecordEvent/costs/date-range?startDate=2024-01-01&endDate=2024-12-31
+Authorization: Bearer {{token}}
+
+### Create a new training record event
+POST {{baseUrl}}/TrainingRecordEvent
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "trainingEventId": 1,
+  "startDate": "2024-01-15T09:00:00Z",
+  "endDate": "2024-01-15T17:00:00Z",
+  "hours": 8,
+  "minutes": 0,
+  "personnelNumber": "12345678",
+  "evidence": true,
+  "costTrainingMaterials": 150.00,
+  "costTrainers": 500.00,
+  "costTrainingFacilities": 200.00,
+  "scholarshipsBursaries": 0.00,
+  "courseFees": 300.00,
+  "accommodationTravel": 100.00,
+  "administrationCosts": 50.00,
+  "equipmentDepreciation": 25.00
+}
+
+### Update a training record event
+PUT {{baseUrl}}/TrainingRecordEvent/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "trainingEventId": 1,
+  "startDate": "2024-01-15T09:00:00Z",
+  "endDate": "2024-01-15T18:00:00Z",
+  "hours": 9,
+  "minutes": 0,
+  "personnelNumber": "12345678",
+  "evidence": true,
+  "costTrainingMaterials": 175.00,
+  "costTrainers": 550.00,
+  "costTrainingFacilities": 220.00,
+  "scholarshipsBursaries": 0.00,
+  "courseFees": 350.00,
+  "accommodationTravel": 120.00,
+  "administrationCosts": 60.00,
+  "equipmentDepreciation": 30.00
+}
+
+### Delete a training record event
+DELETE {{baseUrl}}/TrainingRecordEvent/1
+Authorization: Bearer {{token}}

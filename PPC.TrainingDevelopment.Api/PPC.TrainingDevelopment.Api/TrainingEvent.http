@@ -1,0 +1,103 @@
+@baseUrl = https://localhost:7072/api
+@token = your_jwt_token_here
+
+### Authentication (Get Token First)
+POST {{baseUrl}}/authentication/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "password"
+}
+
+### Get All Training Events
+GET {{baseUrl}}/trainingevent
+Authorization: Bearer {{token}}
+
+### Get Training Event by ID
+GET {{baseUrl}}/trainingevent/1
+Authorization: Bearer {{token}}
+
+### Get Training Events by Personnel Number
+GET {{baseUrl}}/trainingevent/employee/EMP001
+Authorization: Bearer {{token}}
+
+### Get Training Events by ID Number (Non-Employee)
+GET {{baseUrl}}/trainingevent/non-employee/1234567890123
+Authorization: Bearer {{token}}
+
+### Get Training Events by Event Type
+GET {{baseUrl}}/trainingevent/event-type/Technical Training
+Authorization: Bearer {{token}}
+
+### Get Training Events by Region
+GET {{baseUrl}}/trainingevent/region/1
+Authorization: Bearer {{token}}
+
+### Get Training Events by Province
+GET {{baseUrl}}/trainingevent/province/1
+Authorization: Bearer {{token}}
+
+### Get Training Events by Municipality
+GET {{baseUrl}}/trainingevent/municipality/1
+Authorization: Bearer {{token}}
+
+### Get Training Events by Site
+GET {{baseUrl}}/trainingevent/site/1
+Authorization: Bearer {{token}}
+
+### Search Training Events
+GET {{baseUrl}}/trainingevent/search/Safety
+Authorization: Bearer {{token}}
+
+### Create New Training Event (Employee)
+POST {{baseUrl}}/trainingevent
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "personnelNumber": "EMP001",
+  "idNumber": null,
+  "eventType": "Technical Training",
+  "trainingEventName": "Advanced Safety Training",
+  "regionId": 1,
+  "provinceId": 1,
+  "municipalityId": 1,
+  "siteId": 1
+}
+
+### Create New Training Event (Non-Employee)
+POST {{baseUrl}}/trainingevent
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "personnelNumber": null,
+  "idNumber": "1234567890123",
+  "eventType": "Safety Training",
+  "trainingEventName": "Basic Safety Orientation",
+  "regionId": 1,
+  "provinceId": 1,
+  "municipalityId": 1,
+  "siteId": 1
+}
+
+### Update Training Event
+PUT {{baseUrl}}/trainingevent/1
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "personnelNumber": "EMP001",
+  "idNumber": null,
+  "eventType": "Technical Training",
+  "trainingEventName": "Advanced Safety Training - Updated",
+  "regionId": 1,
+  "provinceId": 1,
+  "municipalityId": 1,
+  "siteId": 2
+}
+
+### Delete Training Event
+DELETE {{baseUrl}}/trainingevent/1
+Authorization: Bearer {{token}}
