@@ -15,7 +15,7 @@ namespace PPC.TrainingDevelopment.Api.Services
         {
             var result = new List<TrainingPsMaster>();
             using var conn = new OracleConnection(_connectionString);
-            using var cmd = new OracleCommand("SELECT * FROM SAPBIUSER.MV_EMP_TRAINING_PS_MASTER", conn);
+            using var cmd = new OracleCommand("SELECT * FROM SAPBIUSER.MV_EMP_TRAINING_PS_MASTER WHERE ROWNUM <= 50 AND END_DATE > TRUNC(SYSDATE)         ", conn);
             await conn.OpenAsync();
             using var reader = await cmd.ExecuteReaderAsync();
             while (await reader.ReadAsync())
@@ -28,7 +28,7 @@ namespace PPC.TrainingDevelopment.Api.Services
         public async Task<TrainingPsMaster?> GetByPersonnelNumberAsync(string personnelNumber)
         {
             using var conn = new OracleConnection(_connectionString);
-            using var cmd = new OracleCommand("SELECT * FROM SAPBIUSER.MV_EMP_TRAINING_PS_MASTER WHERE PERSONNEL_NUMBER = :PersonnelNumber OR ID_NUMBER = :PersonnelNumber", conn);
+            using var cmd = new OracleCommand("SELECT * FROM SAPBIUSER.MV_EMP_TRAINING_PS_MASTER WHERE (PERSONNEL_NUMBER = :PersonnelNumber OR ID_NUMBER = :PersonnelNumber) AND END_DATE > TRUNC(SYSDATE) AND ROWNUM <= 50", conn);
             cmd.Parameters.Add(":PersonnelNumber", OracleDbType.NVarchar2).Value = personnelNumber;
             await conn.OpenAsync();
             using var reader = await cmd.ExecuteReaderAsync();

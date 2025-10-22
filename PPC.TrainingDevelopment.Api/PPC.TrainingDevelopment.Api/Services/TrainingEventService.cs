@@ -18,7 +18,6 @@ namespace PPC.TrainingDevelopment.Api.Services
         {
             return await _context.TrainingEvents
                 .Include(te => te.Employee)
-                .Include(te => te.NonEmployee)
                 .Include(te => te.EventType)
                 .Include(te => te.TrainingEventName)
                 .Include(te => te.Region)
@@ -34,7 +33,6 @@ namespace PPC.TrainingDevelopment.Api.Services
         {
             return await _context.TrainingEvents
                 .Include(te => te.Employee)
-                .Include(te => te.NonEmployee)
                 .Include(te => te.EventType)
                 .Include(te => te.TrainingEventName)
                 .Include(te => te.Region)
@@ -54,7 +52,7 @@ namespace PPC.TrainingDevelopment.Api.Services
                 .Include(te => te.Province)
                 .Include(te => te.Municipality)
                 .Include(te => te.Site)
-                .Where(te => te.PersonnelNumber == personnelNumber)
+                .Where(te => te.PersonnelNumber == personnelNumber || te.IDNumber == personnelNumber)
                 .OrderBy(te => te.TrainingEventName!.Value)
                 .ToListAsync();
         }
@@ -62,7 +60,6 @@ namespace PPC.TrainingDevelopment.Api.Services
         public async Task<IEnumerable<TrainingEvent>> GetByIDNumberAsync(string idNumber)
         {
             return await _context.TrainingEvents
-                .Include(te => te.NonEmployee)
                 .Include(te => te.EventType)
                 .Include(te => te.TrainingEventName)
                 .Include(te => te.Region)
@@ -78,7 +75,6 @@ namespace PPC.TrainingDevelopment.Api.Services
         {
             return await _context.TrainingEvents
                 .Include(te => te.Employee)
-                .Include(te => te.NonEmployee)
                 .Include(te => te.EventType)
                 .Include(te => te.TrainingEventName)
                 .Include(te => te.Region)
@@ -94,7 +90,6 @@ namespace PPC.TrainingDevelopment.Api.Services
         {
             return await _context.TrainingEvents
                 .Include(te => te.Employee)
-                .Include(te => te.NonEmployee)
                 .Include(te => te.EventType)
                 .Include(te => te.TrainingEventName)
                 .Include(te => te.Region)
@@ -110,7 +105,6 @@ namespace PPC.TrainingDevelopment.Api.Services
         {
             return await _context.TrainingEvents
                 .Include(te => te.Employee)
-                .Include(te => te.NonEmployee)
                 .Include(te => te.EventType)
                 .Include(te => te.TrainingEventName)
                 .Include(te => te.Region)
@@ -126,7 +120,6 @@ namespace PPC.TrainingDevelopment.Api.Services
         {
             return await _context.TrainingEvents
                 .Include(te => te.Employee)
-                .Include(te => te.NonEmployee)
                 .Include(te => te.EventType)
                 .Include(te => te.TrainingEventName)
                 .Include(te => te.Region)
@@ -142,7 +135,6 @@ namespace PPC.TrainingDevelopment.Api.Services
         {
             return await _context.TrainingEvents
                 .Include(te => te.Employee)
-                .Include(te => te.NonEmployee)
                 .Include(te => te.EventType)
                 .Include(te => te.TrainingEventName)
                 .Include(te => te.Region)
@@ -160,7 +152,6 @@ namespace PPC.TrainingDevelopment.Api.Services
 
             return await _context.TrainingEvents
                 .Include(te => te.Employee)
-                .Include(te => te.NonEmployee)
                 .Include(te => te.EventType)
                 .Include(te => te.TrainingEventName)
                 .Include(te => te.Region)
@@ -237,7 +228,7 @@ namespace PPC.TrainingDevelopment.Api.Services
             var hasPersonnelNumber = !string.IsNullOrWhiteSpace(personnelNumber);
             var hasIDNumber = !string.IsNullOrWhiteSpace(idNumber);
 
-            return Task.FromResult(hasPersonnelNumber != hasIDNumber); // XOR - exactly one must be true
+            return Task.FromResult(hasPersonnelNumber || hasIDNumber); // XOR - exactly one must be true
         }
     }
 }

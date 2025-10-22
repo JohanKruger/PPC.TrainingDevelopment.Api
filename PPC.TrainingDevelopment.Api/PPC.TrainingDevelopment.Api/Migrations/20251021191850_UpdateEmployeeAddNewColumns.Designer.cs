@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PPC.TrainingDevelopment.Api.Data;
 
@@ -11,9 +12,11 @@ using PPC.TrainingDevelopment.Api.Data;
 namespace PPC.TrainingDevelopment.Api.Migrations
 {
     [DbContext(typeof(TrainingDevelopmentDbContext))]
-    partial class TrainingDevelopmentDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251021191850_UpdateEmployeeAddNewColumns")]
+    partial class UpdateEmployeeAddNewColumns
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -345,6 +348,11 @@ namespace PPC.TrainingDevelopment.Api.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
+                    b.HasOne("PPC.TrainingDevelopment.Api.Models.NonEmployee", "NonEmployee")
+                        .WithMany()
+                        .HasForeignKey("IDNumber")
+                        .OnDelete(DeleteBehavior.Restrict);
+
                     b.HasOne("PPC.TrainingDevelopment.Api.Models.LookupValue", "Municipality")
                         .WithMany()
                         .HasForeignKey("MunicipalityId")
@@ -385,6 +393,8 @@ namespace PPC.TrainingDevelopment.Api.Migrations
                     b.Navigation("EventType");
 
                     b.Navigation("Municipality");
+
+                    b.Navigation("NonEmployee");
 
                     b.Navigation("Province");
 

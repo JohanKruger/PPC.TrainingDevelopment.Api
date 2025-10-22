@@ -38,8 +38,7 @@ namespace PPC.TrainingDevelopment.Api.Models
         [ForeignKey("PersonnelNumber")]
         public virtual Employee? Employee { get; set; }
 
-        [ForeignKey("IDNumber")]
-        public virtual NonEmployee? NonEmployee { get; set; }
+        // IDNumber field exists but without foreign key constraint to NonEmployee table
 
         // Lookup navigation properties (if you have these models)
         [ForeignKey("EventTypeId")]

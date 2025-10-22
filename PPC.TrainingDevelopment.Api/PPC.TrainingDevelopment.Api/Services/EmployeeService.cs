@@ -25,7 +25,7 @@ namespace PPC.TrainingDevelopment.Api.Services
         public async Task<Employee?> GetByPersonnelNumberAsync(string personnelNumber)
         {
             return await _context.Employees
-                .FirstOrDefaultAsync(e => e.PersonnelNumber == personnelNumber);
+                .FirstOrDefaultAsync(e => e.PersonnelNumber == personnelNumber || e.IDNumber == personnelNumber);
         }
 
         public async Task<IEnumerable<Employee>> SearchAsync(string searchTerm)

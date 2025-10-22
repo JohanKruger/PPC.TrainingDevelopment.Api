@@ -19,8 +19,6 @@ namespace PPC.TrainingDevelopment.Api.Services
             return await _context.TrainingRecordEvents
                 .Include(tre => tre.TrainingEvent)
                     .ThenInclude(te => te!.Employee)
-                .Include(tre => tre.TrainingEvent)
-                    .ThenInclude(te => te!.NonEmployee)
                 .OrderBy(tre => tre.StartDate)
                 .ThenBy(tre => tre.TrainingEventId)
                 .ToListAsync();
@@ -31,8 +29,6 @@ namespace PPC.TrainingDevelopment.Api.Services
             return await _context.TrainingRecordEvents
                 .Include(tre => tre.TrainingEvent)
                     .ThenInclude(te => te!.Employee)
-                .Include(tre => tre.TrainingEvent)
-                    .ThenInclude(te => te!.NonEmployee)
                 .FirstOrDefaultAsync(tre => tre.TrainingRecordEventId == trainingRecordEventId);
         }
 
@@ -41,8 +37,6 @@ namespace PPC.TrainingDevelopment.Api.Services
             return await _context.TrainingRecordEvents
                 .Include(tre => tre.TrainingEvent)
                     .ThenInclude(te => te!.Employee)
-                .Include(tre => tre.TrainingEvent)
-                    .ThenInclude(te => te!.NonEmployee)
                 .Where(tre => tre.TrainingEventId == trainingEventId)
                 .OrderBy(tre => tre.StartDate)
                 .ToListAsync();
@@ -63,8 +57,6 @@ namespace PPC.TrainingDevelopment.Api.Services
             return await _context.TrainingRecordEvents
                 .Include(tre => tre.TrainingEvent)
                     .ThenInclude(te => te!.Employee)
-                .Include(tre => tre.TrainingEvent)
-                    .ThenInclude(te => te!.NonEmployee)
                 .Where(tre => tre.StartDate >= startDate && tre.EndDate <= endDate)
                 .OrderBy(tre => tre.StartDate)
                 .ThenBy(tre => tre.TrainingEventId)
@@ -76,8 +68,6 @@ namespace PPC.TrainingDevelopment.Api.Services
             return await _context.TrainingRecordEvents
                 .Include(tre => tre.TrainingEvent)
                     .ThenInclude(te => te!.Employee)
-                .Include(tre => tre.TrainingEvent)
-                    .ThenInclude(te => te!.NonEmployee)
                 .Where(tre => tre.Evidence == true)
                 .OrderBy(tre => tre.StartDate)
                 .ThenBy(tre => tre.TrainingEventId)
@@ -89,8 +79,6 @@ namespace PPC.TrainingDevelopment.Api.Services
             return await _context.TrainingRecordEvents
                 .Include(tre => tre.TrainingEvent)
                     .ThenInclude(te => te!.Employee)
-                .Include(tre => tre.TrainingEvent)
-                    .ThenInclude(te => te!.NonEmployee)
                 .Where(tre => tre.Evidence == false || tre.Evidence == null)
                 .OrderBy(tre => tre.StartDate)
                 .ThenBy(tre => tre.TrainingEventId)
