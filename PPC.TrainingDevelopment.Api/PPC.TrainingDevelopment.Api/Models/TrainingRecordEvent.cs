@@ -28,6 +28,9 @@ namespace PPC.TrainingDevelopment.Api.Models
 
         public bool? Evidence { get; set; }
 
+        [MaxLength(255)]
+        public string? ServiceProviderExternal { get; set; }
+
         [Column(TypeName = "decimal(18,2)")]
         public decimal? CostTrainingMaterials { get; set; }
 

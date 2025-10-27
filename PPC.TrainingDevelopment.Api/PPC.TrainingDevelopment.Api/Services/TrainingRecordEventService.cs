@@ -197,6 +197,7 @@ namespace PPC.TrainingDevelopment.Api.Services
             existingRecord.Minutes = trainingRecordEvent.Minutes;
             existingRecord.PersonnelNumber = trainingRecordEvent.PersonnelNumber;
             existingRecord.Evidence = trainingRecordEvent.Evidence;
+            existingRecord.ServiceProviderExternal = trainingRecordEvent.ServiceProviderExternal;
             existingRecord.CostTrainingMaterials = trainingRecordEvent.CostTrainingMaterials;
             existingRecord.CostTrainers = trainingRecordEvent.CostTrainers;
             existingRecord.CostTrainingFacilities = trainingRecordEvent.CostTrainingFacilities;

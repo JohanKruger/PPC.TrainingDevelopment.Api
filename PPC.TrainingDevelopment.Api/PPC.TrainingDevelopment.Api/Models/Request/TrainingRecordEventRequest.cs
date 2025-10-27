@@ -22,6 +22,9 @@ namespace PPC.TrainingDevelopment.Api.Models.Request
 
         public bool? Evidence { get; set; }
 
+        [MaxLength(255)]
+        public string? ServiceProviderExternal { get; set; }
+
         [Range(0, double.MaxValue, ErrorMessage = "Cost must be a positive value")]
         public decimal? CostTrainingMaterials { get; set; }
 
@@ -66,6 +69,9 @@ namespace PPC.TrainingDevelopment.Api.Models.Request
         public string? PersonnelNumber { get; set; }
 
         public bool? Evidence { get; set; }
+
+        [MaxLength(255)]
+        public string? ServiceProviderExternal { get; set; }
 
         [Range(0, double.MaxValue, ErrorMessage = "Cost must be a positive value")]
         public decimal? CostTrainingMaterials { get; set; }
