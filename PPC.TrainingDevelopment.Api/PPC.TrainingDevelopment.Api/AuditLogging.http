@@ -1,0 +1,75 @@
+# Test Audit Logging Functionality
+
+### First, get a token
+POST http://localhost:5048/api/authentication/login
+Content-Type: application/json
+
+{
+    "username": "admin",
+    "password": "admin"
+}
+
+### Test getting all employees (this should be audited)
+GET http://localhost:5048/api/employee
+Authorization: Bearer {{token}}
+
+### Test getting audit logs (this should NOT be audited due to middleware exclusion)
+GET http://localhost:5048/api/auditlogs
+Authorization: Bearer {{token}}
+
+### Test getting audit logs by specific user
+GET http://localhost:5048/api/auditlogs/user/admin
+Authorization: Bearer {{token}}
+
+### Test getting audit logs by controller
+GET http://localhost:5048/api/auditlogs/controller/Employee
+Authorization: Bearer {{token}}
+
+### Test getting audit logs by date range
+GET http://localhost:5048/api/auditlogs/daterange?fromDate=2024-10-27T00:00:00Z&toDate=2024-10-28T23:59:59Z
+Authorization: Bearer {{token}}
+
+### Test creating an employee (this should be audited)
+POST http://localhost:5048/api/employee
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+    "personnelNumber": "TEST001",
+    "firstName": "Test",
+    "lastName": "User",
+    "knownName": "Tester",
+    "race": "Test Race",
+    "gender": "Test Gender",
+    "disability": false,
+    "eeLevel": "Test Level",
+    "eeCategory": "Test Category",
+    "jobTitle": "Test Position",
+    "jobGrade": "T1",
+    "idNumber": "1234567890123",
+    "site": "Test Site"
+}
+
+### Test updating an employee (this should be audited)
+PUT http://localhost:5048/api/employee/TEST001
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+    "firstName": "Updated Test",
+    "lastName": "User",
+    "knownName": "Tester Updated",
+    "race": "Test Race",
+    "gender": "Test Gender",
+    "disability": true,
+    "eeLevel": "Test Level",
+    "eeCategory": "Test Category",
+    "jobTitle": "Updated Test Position",
+    "jobGrade": "T2",
+    "idNumber": "1234567890123",
+    "site": "Test Site"
+}
+
+### Test deleting an employee (this should be audited)
+DELETE http://localhost:5048/api/employee/TEST001
+Authorization: Bearer {{token}}

@@ -15,6 +15,7 @@ namespace PPC.TrainingDevelopment.Api.Data
             public DbSet<NonEmployee> NonEmployees { get; set; }
             public DbSet<TrainingEvent> TrainingEvents { get; set; }
             public DbSet<TrainingRecordEvent> TrainingRecordEvents { get; set; }
+            public DbSet<AuditLog> AuditLogs { get; set; }
 
             protected override void OnModelCreating(ModelBuilder modelBuilder)
             {
@@ -187,6 +188,38 @@ namespace PPC.TrainingDevelopment.Api.Data
                         entity.HasIndex(e => e.StartDate);
                         entity.HasIndex(e => e.EndDate);
                         entity.HasIndex(e => e.Evidence);
+                  });
+
+                  // Configure AuditLog entity
+                  modelBuilder.Entity<AuditLog>(entity =>
+                  {
+                        entity.HasKey(e => e.AuditLogId);
+                        entity.Property(e => e.AuditLogId).ValueGeneratedOnAdd();
+                        entity.Property(e => e.UserId).IsRequired().HasMaxLength(50);
+                        entity.Property(e => e.UserName).IsRequired().HasMaxLength(100);
+                        entity.Property(e => e.HttpMethod).IsRequired().HasMaxLength(10);
+                        entity.Property(e => e.RequestPath).IsRequired().HasMaxLength(500);
+                        entity.Property(e => e.QueryString).HasMaxLength(2000);
+                        entity.Property(e => e.Controller).IsRequired().HasMaxLength(100);
+                        entity.Property(e => e.Action).IsRequired().HasMaxLength(100);
+                        entity.Property(e => e.RequestBody).HasColumnType("nvarchar(max)");
+                        entity.Property(e => e.ResponseBody).HasColumnType("nvarchar(max)");
+                        entity.Property(e => e.StatusCode).IsRequired();
+                        entity.Property(e => e.Timestamp).IsRequired();
+                        entity.Property(e => e.DurationMs).IsRequired();
+                        entity.Property(e => e.IpAddress).HasMaxLength(45);
+                        entity.Property(e => e.UserAgent).HasMaxLength(500);
+                        entity.Property(e => e.ExceptionDetails).HasMaxLength(2000);
+                        entity.Property(e => e.AdditionalInfo).HasMaxLength(500);
+
+                        // Add indexes for better query performance
+                        entity.HasIndex(e => e.UserId);
+                        entity.HasIndex(e => e.Controller);
+                        entity.HasIndex(e => e.Action);
+                        entity.HasIndex(e => e.Timestamp);
+                        entity.HasIndex(e => e.StatusCode);
+                        entity.HasIndex(e => new { e.Controller, e.Action });
+                        entity.HasIndex(e => new { e.UserId, e.Timestamp });
                   });
             }
       }

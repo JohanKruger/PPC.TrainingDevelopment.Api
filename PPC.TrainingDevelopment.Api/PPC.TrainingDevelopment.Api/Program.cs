@@ -1,8 +1,11 @@
 
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using PPC.TrainingDevelopment.Api.Data;
+using PPC.TrainingDevelopment.Api.Middleware;
 using PPC.TrainingDevelopment.Api.Services;
 using PPC.TrainingDevelopment.Api.Services.Interfaces;
 using System.Text;
@@ -16,7 +19,14 @@ namespace PPC.TrainingDevelopment.Api
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-            builder.Services.AddControllers()
+            builder.Services.AddControllers(options =>
+                {
+                    // Require authentication by default for all controllers
+                    var policy = new AuthorizationPolicyBuilder()
+                        .RequireAuthenticatedUser()
+                        .Build();
+                    options.Filters.Add(new AuthorizeFilter(policy));
+                })
                 .AddJsonOptions(options =>
                 {
                     options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
@@ -78,6 +88,7 @@ namespace PPC.TrainingDevelopment.Api
             builder.Services.AddScoped<IEmployeeService, EmployeeService>();
             builder.Services.AddScoped<ITrainingEventService, TrainingEventService>();
             builder.Services.AddScoped<ITrainingRecordEventService, TrainingRecordEventService>();
+            builder.Services.AddScoped<IAuditLogService, AuditLogService>();
             builder.Services.AddScoped<DataSeedingService>();
 
             // Add JWT Authentication
@@ -117,6 +128,9 @@ namespace PPC.TrainingDevelopment.Api
 
             app.UseAuthentication();
             app.UseAuthorization();
+
+            // Use audit logging middleware (after authentication and authorization)
+            app.UseMiddleware<AuditLoggingMiddleware>();
 
             app.MapControllers();
 

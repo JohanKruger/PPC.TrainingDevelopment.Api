@@ -3,20 +3,52 @@
   "WorkspaceRootPath": "C:\\repos\\TDG\\PPC\\PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{8842071F-40B5-433E-BED7-F9BF498D26B3}|PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api.csproj|c:\\repos\\tdg\\ppc\\ppc.trainingdevelopment.api\\ppc.trainingdevelopment.api\\ppc.trainingdevelopment.api\\controllers\\trainingpsmastercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8842071F-40B5-433E-BED7-F9BF498D26B3}|PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api.csproj|solutionrelative:ppc.trainingdevelopment.api\\controllers\\trainingpsmastercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8842071F-40B5-433E-BED7-F9BF498D26B3}|PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api.csproj|c:\\repos\\tdg\\ppc\\ppc.trainingdevelopment.api\\ppc.trainingdevelopment.api\\ppc.trainingdevelopment.api\\middleware\\auditloggingmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8842071F-40B5-433E-BED7-F9BF498D26B3}|PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api.csproj|solutionrelative:ppc.trainingdevelopment.api\\middleware\\auditloggingmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{8842071F-40B5-433E-BED7-F9BF498D26B3}|PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api.csproj|c:\\repos\\tdg\\ppc\\ppc.trainingdevelopment.api\\ppc.trainingdevelopment.api\\ppc.trainingdevelopment.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8842071F-40B5-433E-BED7-F9BF498D26B3}|PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api.csproj|solutionrelative:ppc.trainingdevelopment.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8842071F-40B5-433E-BED7-F9BF498D26B3}|PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api.csproj|c:\\repos\\tdg\\ppc\\ppc.trainingdevelopment.api\\ppc.trainingdevelopment.api\\ppc.trainingdevelopment.api\\controllers\\authenticationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8842071F-40B5-433E-BED7-F9BF498D26B3}|PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api.csproj|solutionrelative:ppc.trainingdevelopment.api\\controllers\\authenticationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8842071F-40B5-433E-BED7-F9BF498D26B3}|PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api.csproj|c:\\repos\\tdg\\ppc\\ppc.trainingdevelopment.api\\ppc.trainingdevelopment.api\\ppc.trainingdevelopment.api\\controllers\\trainingeventcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8842071F-40B5-433E-BED7-F9BF498D26B3}|PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api.csproj|solutionrelative:ppc.trainingdevelopment.api\\controllers\\trainingeventcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8842071F-40B5-433E-BED7-F9BF498D26B3}|PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api.csproj|c:\\repos\\tdg\\ppc\\ppc.trainingdevelopment.api\\ppc.trainingdevelopment.api\\ppc.trainingdevelopment.api\\services\\trainingeventservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8842071F-40B5-433E-BED7-F9BF498D26B3}|PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api.csproj|solutionrelative:ppc.trainingdevelopment.api\\services\\trainingeventservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{8842071F-40B5-433E-BED7-F9BF498D26B3}|PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api.csproj|c:\\repos\\tdg\\ppc\\ppc.trainingdevelopment.api\\ppc.trainingdevelopment.api\\ppc.trainingdevelopment.api\\controllers\\lookupvaluescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8842071F-40B5-433E-BED7-F9BF498D26B3}|PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api.csproj|solutionrelative:ppc.trainingdevelopment.api\\controllers\\lookupvaluescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8842071F-40B5-433E-BED7-F9BF498D26B3}|PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api.csproj|c:\\repos\\tdg\\ppc\\ppc.trainingdevelopment.api\\ppc.trainingdevelopment.api\\ppc.trainingdevelopment.api\\controllers\\employeelookupcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8842071F-40B5-433E-BED7-F9BF498D26B3}|PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api.csproj|solutionrelative:ppc.trainingdevelopment.api\\controllers\\employeelookupcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8842071F-40B5-433E-BED7-F9BF498D26B3}|PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api.csproj|c:\\repos\\tdg\\ppc\\ppc.trainingdevelopment.api\\ppc.trainingdevelopment.api\\ppc.trainingdevelopment.api\\controllers\\auditlogscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8842071F-40B5-433E-BED7-F9BF498D26B3}|PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api.csproj|solutionrelative:ppc.trainingdevelopment.api\\controllers\\auditlogscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8842071F-40B5-433E-BED7-F9BF498D26B3}|PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api.csproj|c:\\repos\\tdg\\ppc\\ppc.trainingdevelopment.api\\ppc.trainingdevelopment.api\\ppc.trainingdevelopment.api\\controllers\\employeecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8842071F-40B5-433E-BED7-F9BF498D26B3}|PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api.csproj|solutionrelative:ppc.trainingdevelopment.api\\controllers\\employeecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8842071F-40B5-433E-BED7-F9BF498D26B3}|PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api.csproj|c:\\repos\\tdg\\ppc\\ppc.trainingdevelopment.api\\ppc.trainingdevelopment.api\\ppc.trainingdevelopment.api\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{8842071F-40B5-433E-BED7-F9BF498D26B3}|PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api.csproj|solutionrelative:ppc.trainingdevelopment.api\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8842071F-40B5-433E-BED7-F9BF498D26B3}|PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api.csproj|c:\\repos\\tdg\\ppc\\ppc.trainingdevelopment.api\\ppc.trainingdevelopment.api\\ppc.trainingdevelopment.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{8842071F-40B5-433E-BED7-F9BF498D26B3}|PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api.csproj|solutionrelative:ppc.trainingdevelopment.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8842071F-40B5-433E-BED7-F9BF498D26B3}|PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api.csproj|c:\\repos\\tdg\\ppc\\ppc.trainingdevelopment.api\\ppc.trainingdevelopment.api\\ppc.trainingdevelopment.api\\services\\trainingeventservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8842071F-40B5-433E-BED7-F9BF498D26B3}|PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api.csproj|solutionrelative:ppc.trainingdevelopment.api\\services\\trainingeventservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8842071F-40B5-433E-BED7-F9BF498D26B3}|PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api.csproj|c:\\repos\\tdg\\ppc\\ppc.trainingdevelopment.api\\ppc.trainingdevelopment.api\\ppc.trainingdevelopment.api\\models\\lookupvalue.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -34,7 +66,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -46,32 +78,148 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "TrainingEventService.cs",
-              "DocumentMoniker": "C:\\repos\\TDG\\PPC\\PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api\\Services\\TrainingEventService.cs",
-              "RelativeDocumentMoniker": "PPC.TrainingDevelopment.Api\\Services\\TrainingEventService.cs",
-              "ToolTip": "C:\\repos\\TDG\\PPC\\PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api\\Services\\TrainingEventService.cs",
-              "RelativeToolTip": "PPC.TrainingDevelopment.Api\\Services\\TrainingEventService.cs",
-              "ViewState": "AgIAAM8AAAAAAAAAAAAvwOYAAAA4AAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "TrainingPsMasterController.cs",
+              "DocumentMoniker": "C:\\repos\\TDG\\PPC\\PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api\\Controllers\\TrainingPsMasterController.cs",
+              "RelativeDocumentMoniker": "PPC.TrainingDevelopment.Api\\Controllers\\TrainingPsMasterController.cs",
+              "ToolTip": "C:\\repos\\TDG\\PPC\\PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api\\Controllers\\TrainingPsMasterController.cs",
+              "RelativeToolTip": "PPC.TrainingDevelopment.Api\\Controllers\\TrainingPsMasterController.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABYAAABIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-22T11:35:31.964Z"
+              "WhenOpened": "2025-10-27T21:48:29.708Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "EmployeeLookupController.cs",
+              "DocumentMoniker": "C:\\repos\\TDG\\PPC\\PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api\\Controllers\\EmployeeLookupController.cs",
+              "RelativeDocumentMoniker": "PPC.TrainingDevelopment.Api\\Controllers\\EmployeeLookupController.cs",
+              "ToolTip": "C:\\repos\\TDG\\PPC\\PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api\\Controllers\\EmployeeLookupController.cs",
+              "RelativeToolTip": "PPC.TrainingDevelopment.Api\\Controllers\\EmployeeLookupController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-27T21:37:50.268Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "AuditLogsController.cs",
+              "DocumentMoniker": "C:\\repos\\TDG\\PPC\\PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api\\Controllers\\AuditLogsController.cs",
+              "RelativeDocumentMoniker": "PPC.TrainingDevelopment.Api\\Controllers\\AuditLogsController.cs",
+              "ToolTip": "C:\\repos\\TDG\\PPC\\PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api\\Controllers\\AuditLogsController.cs",
+              "RelativeToolTip": "PPC.TrainingDevelopment.Api\\Controllers\\AuditLogsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-27T21:37:47.897Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AuthenticationController.cs",
+              "DocumentMoniker": "C:\\repos\\TDG\\PPC\\PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api\\Controllers\\AuthenticationController.cs",
+              "RelativeDocumentMoniker": "PPC.TrainingDevelopment.Api\\Controllers\\AuthenticationController.cs",
+              "ToolTip": "C:\\repos\\TDG\\PPC\\PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api\\Controllers\\AuthenticationController.cs",
+              "RelativeToolTip": "PPC.TrainingDevelopment.Api\\Controllers\\AuthenticationController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-27T21:37:30.538Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "AuditLoggingMiddleware.cs",
+              "DocumentMoniker": "C:\\repos\\TDG\\PPC\\PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api\\Middleware\\AuditLoggingMiddleware.cs",
+              "RelativeDocumentMoniker": "PPC.TrainingDevelopment.Api\\Middleware\\AuditLoggingMiddleware.cs",
+              "ToolTip": "C:\\repos\\TDG\\PPC\\PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api\\Middleware\\AuditLoggingMiddleware.cs",
+              "RelativeToolTip": "PPC.TrainingDevelopment.Api\\Middleware\\AuditLoggingMiddleware.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAA9wB0AAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-27T21:36:27.445Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "LookupValuesController.cs",
+              "DocumentMoniker": "C:\\repos\\TDG\\PPC\\PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api\\Controllers\\LookupValuesController.cs",
+              "RelativeDocumentMoniker": "PPC.TrainingDevelopment.Api\\Controllers\\LookupValuesController.cs",
+              "ToolTip": "C:\\repos\\TDG\\PPC\\PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api\\Controllers\\LookupValuesController.cs",
+              "RelativeToolTip": "PPC.TrainingDevelopment.Api\\Controllers\\LookupValuesController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAABKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-09T15:34:08.921Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\repos\\TDG\\PPC\\PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api\\Program.cs",
+              "RelativeDocumentMoniker": "PPC.TrainingDevelopment.Api\\Program.cs",
+              "ToolTip": "C:\\repos\\TDG\\PPC\\PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api\\Program.cs",
+              "RelativeToolTip": "PPC.TrainingDevelopment.Api\\Program.cs",
+              "ViewState": "AgIAAG8AAAAAAAAAAAAawIAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-09T15:38:06.617Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "TrainingEventController.cs",
               "DocumentMoniker": "C:\\repos\\TDG\\PPC\\PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api\\Controllers\\TrainingEventController.cs",
               "RelativeDocumentMoniker": "PPC.TrainingDevelopment.Api\\Controllers\\TrainingEventController.cs",
               "ToolTip": "C:\\repos\\TDG\\PPC\\PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api\\Controllers\\TrainingEventController.cs",
               "RelativeToolTip": "PPC.TrainingDevelopment.Api\\Controllers\\TrainingEventController.cs",
-              "ViewState": "AgIAAOEAAAAAAAAAAAAlwO8AAAAwAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-09T20:44:33.986Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 8,
+              "Title": "EmployeeController.cs",
+              "DocumentMoniker": "C:\\repos\\TDG\\PPC\\PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api\\Controllers\\EmployeeController.cs",
+              "RelativeDocumentMoniker": "PPC.TrainingDevelopment.Api\\Controllers\\EmployeeController.cs",
+              "ToolTip": "C:\\repos\\TDG\\PPC\\PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api\\Controllers\\EmployeeController.cs",
+              "RelativeToolTip": "PPC.TrainingDevelopment.Api\\Controllers\\EmployeeController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAPkAAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-23T15:33:07.105Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "C:\\repos\\TDG\\PPC\\PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "PPC.TrainingDevelopment.Api\\appsettings.Development.json",
+              "ToolTip": "C:\\repos\\TDG\\PPC\\PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api\\appsettings.Development.json",
+              "RelativeToolTip": "PPC.TrainingDevelopment.Api\\appsettings.Development.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-10-23T15:34:06.504Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\repos\\TDG\\PPC\\PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api\\appsettings.json",
+              "RelativeDocumentMoniker": "PPC.TrainingDevelopment.Api\\appsettings.json",
+              "ToolTip": "C:\\repos\\TDG\\PPC\\PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api\\appsettings.json",
+              "RelativeToolTip": "PPC.TrainingDevelopment.Api\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-10-23T15:40:44.774Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
               "Title": "LookupValue.cs",
               "DocumentMoniker": "C:\\repos\\TDG\\PPC\\PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api\\Models\\LookupValue.cs",
               "RelativeDocumentMoniker": "PPC.TrainingDevelopment.Api\\Models\\LookupValue.cs",
@@ -83,7 +231,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 13,
               "Title": "LookupValueRequest.cs",
               "DocumentMoniker": "C:\\repos\\TDG\\PPC\\PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api\\Models\\Request\\LookupValueRequest.cs",
               "RelativeDocumentMoniker": "PPC.TrainingDevelopment.Api\\Models\\Request\\LookupValueRequest.cs",
@@ -95,28 +243,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\repos\\TDG\\PPC\\PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api\\Program.cs",
-              "RelativeDocumentMoniker": "PPC.TrainingDevelopment.Api\\Program.cs",
-              "ToolTip": "C:\\repos\\TDG\\PPC\\PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api\\Program.cs",
-              "RelativeToolTip": "PPC.TrainingDevelopment.Api\\Program.cs",
-              "ViewState": "AgIAAGsAAAAAAAAAAAAawH8AAAAAAAAAAAAAAA==",
+              "DocumentIndex": 11,
+              "Title": "TrainingEventService.cs",
+              "DocumentMoniker": "C:\\repos\\TDG\\PPC\\PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api\\Services\\TrainingEventService.cs",
+              "RelativeDocumentMoniker": "PPC.TrainingDevelopment.Api\\Services\\TrainingEventService.cs",
+              "ToolTip": "C:\\repos\\TDG\\PPC\\PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api\\Services\\TrainingEventService.cs",
+              "RelativeToolTip": "PPC.TrainingDevelopment.Api\\Services\\TrainingEventService.cs",
+              "ViewState": "AgIAAM8AAAAAAAAAAAAvwOYAAAA4AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-09T15:38:06.617Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "LookupValuesController.cs",
-              "DocumentMoniker": "C:\\repos\\TDG\\PPC\\PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api\\Controllers\\LookupValuesController.cs",
-              "RelativeDocumentMoniker": "PPC.TrainingDevelopment.Api\\Controllers\\LookupValuesController.cs",
-              "ToolTip": "C:\\repos\\TDG\\PPC\\PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api\\PPC.TrainingDevelopment.Api\\Controllers\\LookupValuesController.cs",
-              "RelativeToolTip": "PPC.TrainingDevelopment.Api\\Controllers\\LookupValuesController.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAowBkAAABKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-09T15:34:08.921Z"
+              "WhenOpened": "2025-10-22T11:35:31.964Z"
             }
           ]
         }

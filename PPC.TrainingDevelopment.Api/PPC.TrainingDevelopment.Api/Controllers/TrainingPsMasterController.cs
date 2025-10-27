@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PPC.TrainingDevelopment.Api.Models;
 using PPC.TrainingDevelopment.Api.Services;
@@ -8,6 +9,7 @@ namespace PPC.TrainingDevelopment.Api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize]
     public class TrainingPsMasterController : ControllerBase
     {
         private readonly TrainingPsMasterService _service;

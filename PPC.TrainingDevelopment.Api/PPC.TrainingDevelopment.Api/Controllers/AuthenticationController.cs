@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using PPC.TrainingDevelopment.Api.Services.Interfaces;
 using PPC.TrainingDevelopment.Api.Models.Request;
 
@@ -6,6 +7,7 @@ namespace PPC.TrainingDevelopment.Api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [AllowAnonymous]
     public class AuthenticationController : ControllerBase
     {
         private readonly IAuthenticationService _authenticationService;
