@@ -253,6 +253,7 @@ namespace PPC.TrainingDevelopment.Api.Controllers
                     CourseFees = request.CourseFees,
                     Accommodation = request.Accommodation,
                     Travel = request.Travel,
+                    Meal = request.Meal,
                     AdministrationCosts = request.AdministrationCosts,
                     EquipmentDepreciation = request.EquipmentDepreciation
                 };
@@ -304,6 +305,7 @@ namespace PPC.TrainingDevelopment.Api.Controllers
                     CourseFees = request.CourseFees,
                     Accommodation = request.Accommodation,
                     Travel = request.Travel,
+                    Meal = request.Meal,
                     AdministrationCosts = request.AdministrationCosts,
                     EquipmentDepreciation = request.EquipmentDepreciation
                 };
