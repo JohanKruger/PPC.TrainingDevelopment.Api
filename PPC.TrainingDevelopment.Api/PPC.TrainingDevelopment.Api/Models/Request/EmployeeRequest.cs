@@ -50,6 +50,9 @@ namespace PPC.TrainingDevelopment.Api.Models.Request
 
         [MaxLength(100)]
         public string? HighestQualification { get; set; }
+
+        [MaxLength(1000)]
+        public string? Notes { get; set; }
     }
 
     public class UpdateEmployeeRequest
@@ -96,5 +99,8 @@ namespace PPC.TrainingDevelopment.Api.Models.Request
 
         [MaxLength(100)]
         public string? HighestQualification { get; set; }
+
+        [MaxLength(1000)]
+        public string? Notes { get; set; }
     }
 }

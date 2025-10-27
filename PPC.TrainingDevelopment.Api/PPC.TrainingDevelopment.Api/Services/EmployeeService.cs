@@ -40,7 +40,8 @@ namespace PPC.TrainingDevelopment.Api.Services
                            (e.JobTitle != null && e.JobTitle.ToLower().Contains(lowerSearchTerm)) ||
                            (e.JobGrade != null && e.JobGrade.ToLower().Contains(lowerSearchTerm)) ||
                            (e.IDNumber != null && e.IDNumber.ToLower().Contains(lowerSearchTerm)) ||
-                           (e.Site != null && e.Site.ToLower().Contains(lowerSearchTerm)))
+                           (e.Site != null && e.Site.ToLower().Contains(lowerSearchTerm)) ||
+                           (e.Notes != null && e.Notes.ToLower().Contains(lowerSearchTerm)))
                 .OrderBy(e => e.LastName)
                 .ThenBy(e => e.FirstName)
                 .ToListAsync();
@@ -75,6 +76,7 @@ namespace PPC.TrainingDevelopment.Api.Services
             existingEmployee.IDNumber = employee.IDNumber;
             existingEmployee.Site = employee.Site;
             existingEmployee.HighestQualification = employee.HighestQualification;
+            existingEmployee.Notes = employee.Notes;
 
             await _context.SaveChangesAsync();
             return existingEmployee;

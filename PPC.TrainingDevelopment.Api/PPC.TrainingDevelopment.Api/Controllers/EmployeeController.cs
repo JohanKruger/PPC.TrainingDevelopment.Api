@@ -60,9 +60,9 @@ namespace PPC.TrainingDevelopment.Api.Controllers
         }
 
         /// <summary>
-        /// Search employee records by name, personnel number, job title, job grade, ID number, or site
+        /// Search employee records by name, personnel number, job title, job grade, ID number, site, or notes
         /// </summary>
-        /// <param name="searchTerm">Search term to match against first name, last name, known name, personnel number, job title, job grade, ID number, or site</param>
+        /// <param name="searchTerm">Search term to match against first name, last name, known name, personnel number, job title, job grade, ID number, site, or notes</param>
         /// <returns>List of matching employee records</returns>
         [HttpGet("search/{searchTerm}")]
         public async Task<ActionResult<IEnumerable<Employee>>> Search(string searchTerm)
@@ -216,7 +216,8 @@ namespace PPC.TrainingDevelopment.Api.Controllers
                     JobGrade = request.JobGrade,
                     IDNumber = request.IDNumber,
                     Site = request.Site,
-                    HighestQualification = request.HighestQualification
+                    HighestQualification = request.HighestQualification,
+                    Notes = request.Notes
                 };
 
                 var createdEmployee = await _employeeService.CreateAsync(employee);
@@ -260,7 +261,8 @@ namespace PPC.TrainingDevelopment.Api.Controllers
                     JobGrade = request.JobGrade,
                     IDNumber = request.IDNumber,
                     Site = request.Site,
-                    HighestQualification = request.HighestQualification
+                    HighestQualification = request.HighestQualification,
+                    Notes = request.Notes
                 };
 
                 var updatedEmployee = await _employeeService.UpdateAsync(personnelNumber, employee);

@@ -54,6 +54,12 @@ namespace PPC.TrainingDevelopment.Api.Data
                         entity.Property(e => e.Gender).HasMaxLength(20);
                         entity.Property(e => e.EELevel).HasMaxLength(50);
                         entity.Property(e => e.EECategory).HasMaxLength(50);
+                        entity.Property(e => e.JobTitle).HasMaxLength(100);
+                        entity.Property(e => e.JobGrade).HasMaxLength(20);
+                        entity.Property(e => e.IDNumber).HasMaxLength(13);
+                        entity.Property(e => e.Site).HasMaxLength(100);
+                        entity.Property(e => e.HighestQualification).HasMaxLength(100);
+                        entity.Property(e => e.Notes).HasMaxLength(1000);
                   });
 
                   // Configure EmployeeLookup entity

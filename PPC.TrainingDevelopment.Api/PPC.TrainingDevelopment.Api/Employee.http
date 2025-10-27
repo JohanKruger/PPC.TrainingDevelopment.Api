@@ -56,7 +56,13 @@ Authorization: Bearer {{token}}
   "gender": "Male",
   "disability": false,
   "eeLevel": "Senior",
-  "eeCategory": "Management"
+  "eeCategory": "Management",
+  "jobTitle": "Software Developer",
+  "jobGrade": "L4",
+  "idNumber": "8001015009087",
+  "site": "Head Office",
+  "highestQualification": "Bachelor's Degree in Computer Science",
+  "notes": "Experienced developer with strong technical skills. Specializes in .NET development."
 }
 
 ### Update Employee
@@ -73,7 +79,13 @@ Authorization: Bearer {{token}}
   "gender": "Male",
   "disability": false,
   "eeLevel": "Senior",
-  "eeCategory": "Management"
+  "eeCategory": "Management",
+  "jobTitle": "Senior Software Developer",
+  "jobGrade": "L5",
+  "idNumber": "8001015009087",
+  "site": "Johannesburg Office",
+  "highestQualification": "Master's Degree in Computer Science",
+  "notes": "Promoted to Senior Developer. Excellent leadership and mentoring skills. Ready for team lead role."
 }
 
 ### Delete Employee
