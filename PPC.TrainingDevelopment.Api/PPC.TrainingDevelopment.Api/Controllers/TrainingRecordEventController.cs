@@ -251,7 +251,8 @@ namespace PPC.TrainingDevelopment.Api.Controllers
                     CostTrainingFacilities = request.CostTrainingFacilities,
                     ScholarshipsBursaries = request.ScholarshipsBursaries,
                     CourseFees = request.CourseFees,
-                    AccommodationTravel = request.AccommodationTravel,
+                    Accommodation = request.Accommodation,
+                    Travel = request.Travel,
                     AdministrationCosts = request.AdministrationCosts,
                     EquipmentDepreciation = request.EquipmentDepreciation
                 };
@@ -301,7 +302,8 @@ namespace PPC.TrainingDevelopment.Api.Controllers
                     CostTrainingFacilities = request.CostTrainingFacilities,
                     ScholarshipsBursaries = request.ScholarshipsBursaries,
                     CourseFees = request.CourseFees,
-                    AccommodationTravel = request.AccommodationTravel,
+                    Accommodation = request.Accommodation,
+                    Travel = request.Travel,
                     AdministrationCosts = request.AdministrationCosts,
                     EquipmentDepreciation = request.EquipmentDepreciation
                 };

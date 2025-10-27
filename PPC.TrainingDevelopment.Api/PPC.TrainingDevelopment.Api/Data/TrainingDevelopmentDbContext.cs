@@ -164,7 +164,8 @@ namespace PPC.TrainingDevelopment.Api.Data
                         entity.Property(e => e.CostTrainingFacilities).HasColumnType("decimal(18,2)");
                         entity.Property(e => e.ScholarshipsBursaries).HasColumnType("decimal(18,2)");
                         entity.Property(e => e.CourseFees).HasColumnType("decimal(18,2)");
-                        entity.Property(e => e.AccommodationTravel).HasColumnType("decimal(18,2)");
+                        entity.Property(e => e.Accommodation).HasColumnType("decimal(18,2)");
+                        entity.Property(e => e.Travel).HasColumnType("decimal(18,2)");
                         entity.Property(e => e.AdministrationCosts).HasColumnType("decimal(18,2)");
                         entity.Property(e => e.EquipmentDepreciation).HasColumnType("decimal(18,2)");
 

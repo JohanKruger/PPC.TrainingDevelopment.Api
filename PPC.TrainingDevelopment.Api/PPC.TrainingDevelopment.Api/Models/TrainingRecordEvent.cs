@@ -47,7 +47,10 @@ namespace PPC.TrainingDevelopment.Api.Models
         public decimal? CourseFees { get; set; }
 
         [Column(TypeName = "decimal(18,2)")]
-        public decimal? AccommodationTravel { get; set; }
+        public decimal? Accommodation { get; set; }
+
+        [Column(TypeName = "decimal(18,2)")]
+        public decimal? Travel { get; set; }
 
         [Column(TypeName = "decimal(18,2)")]
         public decimal? AdministrationCosts { get; set; }
@@ -73,7 +76,8 @@ namespace PPC.TrainingDevelopment.Api.Models
             (CostTrainingFacilities ?? 0) +
             (ScholarshipsBursaries ?? 0) +
             (CourseFees ?? 0) +
-            (AccommodationTravel ?? 0) +
+            (Accommodation ?? 0) +
+            (Travel ?? 0) +
             (AdministrationCosts ?? 0) +
             (EquipmentDepreciation ?? 0);
     }

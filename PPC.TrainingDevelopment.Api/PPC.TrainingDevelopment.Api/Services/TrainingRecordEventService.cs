@@ -96,14 +96,15 @@ namespace PPC.TrainingDevelopment.Api.Services
                     CostTrainingFacilities = tre.CostTrainingFacilities ?? 0,
                     ScholarshipsBursaries = tre.ScholarshipsBursaries ?? 0,
                     CourseFees = tre.CourseFees ?? 0,
-                    AccommodationTravel = tre.AccommodationTravel ?? 0,
+                    Accommodation = tre.Accommodation ?? 0,
+                    Travel = tre.Travel ?? 0,
                     AdministrationCosts = tre.AdministrationCosts ?? 0,
                     EquipmentDepreciation = tre.EquipmentDepreciation ?? 0
                 })
                 .ToListAsync();
 
             return costs.Sum(c => c.CostTrainingMaterials + c.CostTrainers + c.CostTrainingFacilities +
-                                 c.ScholarshipsBursaries + c.CourseFees + c.AccommodationTravel +
+                                 c.ScholarshipsBursaries + c.CourseFees + c.Accommodation + c.Travel +
                                  c.AdministrationCosts + c.EquipmentDepreciation);
         }
 
@@ -118,14 +119,15 @@ namespace PPC.TrainingDevelopment.Api.Services
                     CostTrainingFacilities = tre.CostTrainingFacilities ?? 0,
                     ScholarshipsBursaries = tre.ScholarshipsBursaries ?? 0,
                     CourseFees = tre.CourseFees ?? 0,
-                    AccommodationTravel = tre.AccommodationTravel ?? 0,
+                    Accommodation = tre.Accommodation ?? 0,
+                    Travel = tre.Travel ?? 0,
                     AdministrationCosts = tre.AdministrationCosts ?? 0,
                     EquipmentDepreciation = tre.EquipmentDepreciation ?? 0
                 })
                 .ToListAsync();
 
             return costs.Sum(c => c.CostTrainingMaterials + c.CostTrainers + c.CostTrainingFacilities +
-                                 c.ScholarshipsBursaries + c.CourseFees + c.AccommodationTravel +
+                                 c.ScholarshipsBursaries + c.CourseFees + c.Accommodation + c.Travel +
                                  c.AdministrationCosts + c.EquipmentDepreciation);
         }
 
@@ -140,14 +142,15 @@ namespace PPC.TrainingDevelopment.Api.Services
                     CostTrainingFacilities = tre.CostTrainingFacilities ?? 0,
                     ScholarshipsBursaries = tre.ScholarshipsBursaries ?? 0,
                     CourseFees = tre.CourseFees ?? 0,
-                    AccommodationTravel = tre.AccommodationTravel ?? 0,
+                    Accommodation = tre.Accommodation ?? 0,
+                    Travel = tre.Travel ?? 0,
                     AdministrationCosts = tre.AdministrationCosts ?? 0,
                     EquipmentDepreciation = tre.EquipmentDepreciation ?? 0
                 })
                 .ToListAsync();
 
             return costs.Sum(c => c.CostTrainingMaterials + c.CostTrainers + c.CostTrainingFacilities +
-                                 c.ScholarshipsBursaries + c.CourseFees + c.AccommodationTravel +
+                                 c.ScholarshipsBursaries + c.CourseFees + c.Accommodation + c.Travel +
                                  c.AdministrationCosts + c.EquipmentDepreciation);
         }
 
@@ -203,7 +206,8 @@ namespace PPC.TrainingDevelopment.Api.Services
             existingRecord.CostTrainingFacilities = trainingRecordEvent.CostTrainingFacilities;
             existingRecord.ScholarshipsBursaries = trainingRecordEvent.ScholarshipsBursaries;
             existingRecord.CourseFees = trainingRecordEvent.CourseFees;
-            existingRecord.AccommodationTravel = trainingRecordEvent.AccommodationTravel;
+            existingRecord.Accommodation = trainingRecordEvent.Accommodation;
+            existingRecord.Travel = trainingRecordEvent.Travel;
             existingRecord.AdministrationCosts = trainingRecordEvent.AdministrationCosts;
             existingRecord.EquipmentDepreciation = trainingRecordEvent.EquipmentDepreciation;
 

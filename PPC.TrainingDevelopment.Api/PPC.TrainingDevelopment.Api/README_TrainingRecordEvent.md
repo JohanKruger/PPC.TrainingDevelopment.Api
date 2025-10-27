@@ -140,7 +140,8 @@ Authorization: Bearer YOUR_JWT_TOKEN_HERE
   "costTrainingFacilities": 200.0,
   "scholarshipsBursaries": 0.0,
   "courseFees": 300.0,
-  "accommodationTravel": 100.0,
+  "accommodation": 50.0,
+  "travel": 50.0,
   "administrationCosts": 50.0,
   "equipmentDepreciation": 25.0,
   "totalDurationMinutes": 480,
@@ -164,7 +165,8 @@ Authorization: Bearer YOUR_JWT_TOKEN_HERE
   "costTrainingFacilities": 200.0,
   "scholarshipsBursaries": 0.0,
   "courseFees": 300.0,
-  "accommodationTravel": 100.0,
+  "accommodation": 50.0,
+  "travel": 50.0,
   "administrationCosts": 50.0,
   "equipmentDepreciation": 25.0
 }
@@ -179,7 +181,8 @@ The API supports the following cost categories:
 - **Training Facilities**: Cost of facilities including catering
 - **Scholarships/Bursaries**: Scholarships and bursaries amount
 - **Course Fees**: Course fees and tuition
-- **Accommodation/Travel**: Accommodation and travel costs
+- **Accommodation**: Accommodation costs for training participants
+- **Travel**: Travel costs for training participants
 - **Administration Costs**: Administration and overhead costs
 - **Equipment Depreciation**: Equipment depreciation costs
 

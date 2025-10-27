@@ -22,7 +22,8 @@ The TrainingRecordEvent entity represents detailed training session records with
 - Training Facilities (including catering)
 - Scholarships and Bursaries
 - Course Fees
-- Accommodation and Travel
+- Accommodation (separate tracking)
+- Travel (separate tracking)
 - Administration Costs
 - Equipment Depreciation
 
@@ -113,7 +114,8 @@ public class CreateTrainingRecordEventRequest
     [Range(0, double.MaxValue)] public decimal? CostTrainingFacilities { get; set; }
     [Range(0, double.MaxValue)] public decimal? ScholarshipsBursaries { get; set; }
     [Range(0, double.MaxValue)] public decimal? CourseFees { get; set; }
-    [Range(0, double.MaxValue)] public decimal? AccommodationTravel { get; set; }
+    [Range(0, double.MaxValue)] public decimal? Accommodation { get; set; }
+    [Range(0, double.MaxValue)] public decimal? Travel { get; set; }
     [Range(0, double.MaxValue)] public decimal? AdministrationCosts { get; set; }
     [Range(0, double.MaxValue)] public decimal? EquipmentDepreciation { get; set; }
 }
@@ -137,7 +139,8 @@ public class TrainingRecordEvent
     public decimal? CostTrainingFacilities { get; set; }
     public decimal? ScholarshipsBursaries { get; set; }
     public decimal? CourseFees { get; set; }
-    public decimal? AccommodationTravel { get; set; }
+    public decimal? Accommodation { get; set; }
+    public decimal? Travel { get; set; }
     public decimal? AdministrationCosts { get; set; }
     public decimal? EquipmentDepreciation { get; set; }
     public TrainingEvent? TrainingEvent { get; set; }

@@ -41,7 +41,10 @@ namespace PPC.TrainingDevelopment.Api.Models.Request
         public decimal? CourseFees { get; set; }
 
         [Range(0, double.MaxValue, ErrorMessage = "Cost must be a positive value")]
-        public decimal? AccommodationTravel { get; set; }
+        public decimal? Accommodation { get; set; }
+
+        [Range(0, double.MaxValue, ErrorMessage = "Cost must be a positive value")]
+        public decimal? Travel { get; set; }
 
         [Range(0, double.MaxValue, ErrorMessage = "Cost must be a positive value")]
         public decimal? AdministrationCosts { get; set; }
@@ -89,7 +92,10 @@ namespace PPC.TrainingDevelopment.Api.Models.Request
         public decimal? CourseFees { get; set; }
 
         [Range(0, double.MaxValue, ErrorMessage = "Cost must be a positive value")]
-        public decimal? AccommodationTravel { get; set; }
+        public decimal? Accommodation { get; set; }
+
+        [Range(0, double.MaxValue, ErrorMessage = "Cost must be a positive value")]
+        public decimal? Travel { get; set; }
 
         [Range(0, double.MaxValue, ErrorMessage = "Cost must be a positive value")]
         public decimal? AdministrationCosts { get; set; }
