@@ -16,6 +16,7 @@ namespace PPC.TrainingDevelopment.Api.Data
             public DbSet<TrainingEvent> TrainingEvents { get; set; }
             public DbSet<TrainingRecordEvent> TrainingRecordEvents { get; set; }
             public DbSet<AuditLog> AuditLogs { get; set; }
+            public DbSet<UserPermission> UserPermissions { get; set; }
 
             protected override void OnModelCreating(ModelBuilder modelBuilder)
             {
@@ -220,6 +221,28 @@ namespace PPC.TrainingDevelopment.Api.Data
                         entity.HasIndex(e => e.StatusCode);
                         entity.HasIndex(e => new { e.Controller, e.Action });
                         entity.HasIndex(e => new { e.UserId, e.Timestamp });
+                  });
+
+                  // Configure UserPermission entity
+                  modelBuilder.Entity<UserPermission>(entity =>
+                  {
+                        entity.HasKey(e => e.PermissionId);
+                        entity.Property(e => e.PermissionId).ValueGeneratedOnAdd();
+                        entity.Property(e => e.PersonnelNo).IsRequired().HasMaxLength(20);
+                        entity.Property(e => e.PermissionCode).IsRequired().HasMaxLength(100);
+                        entity.Property(e => e.CreatedDate).IsRequired().HasDefaultValueSql("GETDATE()");
+
+                        // Configure foreign key relationship
+                        entity.HasOne(e => e.Employee)
+                              .WithMany()
+                              .HasForeignKey(e => e.PersonnelNo)
+                              .OnDelete(DeleteBehavior.Cascade);
+
+                        // Add indexes for better query performance
+                        entity.HasIndex(e => e.PersonnelNo);
+                        entity.HasIndex(e => e.PermissionCode);
+                        entity.HasIndex(e => new { e.PersonnelNo, e.PermissionCode }).IsUnique();
+                        entity.HasIndex(e => e.CreatedDate);
                   });
             }
       }

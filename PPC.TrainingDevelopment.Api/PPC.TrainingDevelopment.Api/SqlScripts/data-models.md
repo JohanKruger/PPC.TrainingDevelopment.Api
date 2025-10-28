@@ -145,3 +145,27 @@
 - Cost fields are optional and default to NULL if not provided
 - Evidence field tracks completion documentation availability
 - Multiple training record events can exist per training event (for multi-session courses)
+
+**Entity: UserPermissions**
+
+| Column         | Type          | Constraints                          | Description                                |
+| -------------- | ------------- | ------------------------------------ | ------------------------------------------ |
+| PermissionId   | int           | IDENTITY(1,1), PRIMARY KEY, NOT NULL | Unique identifier for the permission       |
+| PersonnelNo    | nvarchar(20)  | NOT NULL                             | Personnel number (foreign key to Employee) |
+| PermissionCode | nvarchar(100) | NOT NULL                             | Code/string representing the permission    |
+| CreatedDate    | datetime      | NOT NULL, DEFAULT GETDATE()          | Timestamp when the permission was created  |
+
+**Constraints & Notes:**
+
+- PermissionId: Primary key, auto-increment.
+- PersonnelNo: Required; should reference Employee.PersonnelNumber.
+- PermissionCode: Free-form string; consider using a lookup table if codes become standardized.
+- CreatedDate: Automatically set on insert.
+
+**Business Rules:**
+
+- Each UserPermissions row must reference a valid employee PersonnelNo.
+- PersonnelNo and PermissionCode are required.
+- A personnel can have multiple permission records.
+- CreatedDate indicates when the permission was granted and must not be altered except for audit purposes.
+- Consider enforcing uniqueness if duplicate permission codes per personnel are not allowed (e.g., UNIQUE(PersonnelNo, PermissionCode)).

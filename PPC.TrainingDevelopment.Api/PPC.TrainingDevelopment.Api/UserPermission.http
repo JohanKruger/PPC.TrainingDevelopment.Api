@@ -1,0 +1,110 @@
+@baseUrl = https://localhost:7257
+@token = YOUR_JWT_TOKEN_HERE
+
+### Get all user permissions
+GET {{baseUrl}}/api/UserPermission
+Authorization: Bearer {{token}}
+
+### Get user permission by ID
+GET {{baseUrl}}/api/UserPermission/1
+Authorization: Bearer {{token}}
+
+### Get user permissions by personnel number
+GET {{baseUrl}}/api/UserPermission/personnel/EMP001
+Authorization: Bearer {{token}}
+
+### Get user permissions by permission code
+GET {{baseUrl}}/api/UserPermission/permission-code/READ_EMPLOYEES
+Authorization: Bearer {{token}}
+
+### Check if personnel has specific permission
+GET {{baseUrl}}/api/UserPermission/check/EMP001/READ_EMPLOYEES
+Authorization: Bearer {{token}}
+
+### Search user permissions
+GET {{baseUrl}}/api/UserPermission/search?searchTerm=EMP001
+Authorization: Bearer {{token}}
+
+### Create a new user permission
+POST {{baseUrl}}/api/UserPermission
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "personnelNo": "EMP001",
+  "permissionCode": "READ_EMPLOYEES"
+}
+
+### Create another user permission
+POST {{baseUrl}}/api/UserPermission
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "personnelNo": "EMP001",
+  "permissionCode": "WRITE_EMPLOYEES"
+}
+
+### Create user permission for different employee
+POST {{baseUrl}}/api/UserPermission
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "personnelNo": "EMP002",
+  "permissionCode": "READ_TRAINING_EVENTS"
+}
+
+### Update user permission
+PUT {{baseUrl}}/api/UserPermission/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "personnelNo": "EMP001",
+  "permissionCode": "ADMIN_ACCESS"
+}
+
+### Delete user permission
+DELETE {{baseUrl}}/api/UserPermission/1
+Authorization: Bearer {{token}}
+
+### Test error scenarios
+
+### Try to create permission for non-existent employee
+POST {{baseUrl}}/api/UserPermission
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "personnelNo": "INVALID123",
+  "permissionCode": "READ_EMPLOYEES"
+}
+
+### Try to create duplicate permission
+POST {{baseUrl}}/api/UserPermission
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "personnelNo": "EMP001",
+  "permissionCode": "READ_EMPLOYEES"
+}
+
+### Try to get non-existent permission
+GET {{baseUrl}}/api/UserPermission/999
+Authorization: Bearer {{token}}
+
+### Try to update non-existent permission
+PUT {{baseUrl}}/api/UserPermission/999
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "personnelNo": "EMP001",
+  "permissionCode": "UPDATED_PERMISSION"
+}
+
+### Try to delete non-existent permission
+DELETE {{baseUrl}}/api/UserPermission/999
+Authorization: Bearer {{token}}
