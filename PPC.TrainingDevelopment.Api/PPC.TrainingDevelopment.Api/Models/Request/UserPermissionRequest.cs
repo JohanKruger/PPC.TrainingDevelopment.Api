@@ -5,8 +5,8 @@ namespace PPC.TrainingDevelopment.Api.Models.Request
     public class CreateUserPermissionRequest
     {
         [Required]
-        [MaxLength(20)]
-        public string PersonnelNo { get; set; } = string.Empty;
+        [MaxLength(100)]
+        public string Username { get; set; } = string.Empty;
 
         [Required]
         [MaxLength(100)]
@@ -16,8 +16,8 @@ namespace PPC.TrainingDevelopment.Api.Models.Request
     public class UpdateUserPermissionRequest
     {
         [Required]
-        [MaxLength(20)]
-        public string PersonnelNo { get; set; } = string.Empty;
+        [MaxLength(100)]
+        public string Username { get; set; } = string.Empty;
 
         [Required]
         [MaxLength(100)]

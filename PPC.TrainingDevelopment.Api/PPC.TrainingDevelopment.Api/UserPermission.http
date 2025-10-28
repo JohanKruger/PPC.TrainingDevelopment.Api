@@ -9,20 +9,20 @@ Authorization: Bearer {{token}}
 GET {{baseUrl}}/api/UserPermission/1
 Authorization: Bearer {{token}}
 
-### Get user permissions by personnel number
-GET {{baseUrl}}/api/UserPermission/personnel/EMP001
+### Get user permissions by username
+GET {{baseUrl}}/api/UserPermission/username/john.doe
 Authorization: Bearer {{token}}
 
 ### Get user permissions by permission code
 GET {{baseUrl}}/api/UserPermission/permission-code/READ_EMPLOYEES
 Authorization: Bearer {{token}}
 
-### Check if personnel has specific permission
-GET {{baseUrl}}/api/UserPermission/check/EMP001/READ_EMPLOYEES
+### Check if user has specific permission
+GET {{baseUrl}}/api/UserPermission/check/john.doe/READ_EMPLOYEES
 Authorization: Bearer {{token}}
 
 ### Search user permissions
-GET {{baseUrl}}/api/UserPermission/search?searchTerm=EMP001
+GET {{baseUrl}}/api/UserPermission/search?searchTerm=john.doe
 Authorization: Bearer {{token}}
 
 ### Create a new user permission
@@ -31,7 +31,7 @@ Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
-  "personnelNo": "EMP001",
+  "username": "john.doe",
   "permissionCode": "READ_EMPLOYEES"
 }
 
@@ -41,17 +41,17 @@ Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
-  "personnelNo": "EMP001",
+  "username": "john.doe",
   "permissionCode": "WRITE_EMPLOYEES"
 }
 
-### Create user permission for different employee
+### Create user permission for different user
 POST {{baseUrl}}/api/UserPermission
 Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
-  "personnelNo": "EMP002",
+  "username": "jane.smith",
   "permissionCode": "READ_TRAINING_EVENTS"
 }
 
@@ -61,7 +61,7 @@ Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
-  "personnelNo": "EMP001",
+  "username": "john.doe",
   "permissionCode": "ADMIN_ACCESS"
 }
 
@@ -71,23 +71,13 @@ Authorization: Bearer {{token}}
 
 ### Test error scenarios
 
-### Try to create permission for non-existent employee
-POST {{baseUrl}}/api/UserPermission
-Authorization: Bearer {{token}}
-Content-Type: application/json
-
-{
-  "personnelNo": "INVALID123",
-  "permissionCode": "READ_EMPLOYEES"
-}
-
 ### Try to create duplicate permission
 POST {{baseUrl}}/api/UserPermission
 Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
-  "personnelNo": "EMP001",
+  "username": "john.doe",
   "permissionCode": "READ_EMPLOYEES"
 }
 
@@ -101,7 +91,7 @@ Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
-  "personnelNo": "EMP001",
+  "username": "john.doe",
   "permissionCode": "UPDATED_PERMISSION"
 }
 

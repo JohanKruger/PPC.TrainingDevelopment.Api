@@ -12,12 +12,10 @@ namespace PPC.TrainingDevelopment.Api.Controllers
     public class UserPermissionController : ControllerBase
     {
         private readonly IUserPermissionService _userPermissionService;
-        private readonly IEmployeeService _employeeService;
 
-        public UserPermissionController(IUserPermissionService userPermissionService, IEmployeeService employeeService)
+        public UserPermissionController(IUserPermissionService userPermissionService)
         {
             _userPermissionService = userPermissionService;
-            _employeeService = employeeService;
         }
 
         /// <summary>
@@ -62,16 +60,16 @@ namespace PPC.TrainingDevelopment.Api.Controllers
         }
 
         /// <summary>
-        /// Get user permissions by personnel number
+        /// Get user permissions by username
         /// </summary>
-        /// <param name="personnelNo">Personnel number</param>
-        /// <returns>List of user permissions for the specified personnel</returns>
-        [HttpGet("personnel/{personnelNo}")]
-        public async Task<ActionResult<IEnumerable<UserPermission>>> GetByPersonnelNo(string personnelNo)
+        /// <param name="username">Username</param>
+        /// <returns>List of user permissions for the specified username</returns>
+        [HttpGet("username/{username}")]
+        public async Task<ActionResult<IEnumerable<UserPermission>>> GetByUsername(string username)
         {
             try
             {
-                var permissions = await _userPermissionService.GetByPersonnelNoAsync(personnelNo);
+                var permissions = await _userPermissionService.GetByUsernameAsync(username);
                 return Ok(permissions);
             }
             catch (Exception ex)
@@ -100,17 +98,17 @@ namespace PPC.TrainingDevelopment.Api.Controllers
         }
 
         /// <summary>
-        /// Check if a personnel has a specific permission
+        /// Check if a user has a specific permission
         /// </summary>
-        /// <param name="personnelNo">Personnel number</param>
+        /// <param name="username">Username</param>
         /// <param name="permissionCode">Permission code</param>
         /// <returns>Boolean indicating if the permission exists</returns>
-        [HttpGet("check/{personnelNo}/{permissionCode}")]
-        public async Task<ActionResult<bool>> HasPermission(string personnelNo, string permissionCode)
+        [HttpGet("check/{username}/{permissionCode}")]
+        public async Task<ActionResult<bool>> HasPermission(string username, string permissionCode)
         {
             try
             {
-                var hasPermission = await _userPermissionService.HasPermissionAsync(personnelNo, permissionCode);
+                var hasPermission = await _userPermissionService.HasPermissionAsync(username, permissionCode);
                 return Ok(new { hasPermission });
             }
             catch (Exception ex)
@@ -158,23 +156,16 @@ namespace PPC.TrainingDevelopment.Api.Controllers
                     return BadRequest(ModelState);
                 }
 
-                // Validate that the employee exists
-                var employeeExists = await _employeeService.ExistsAsync(request.PersonnelNo);
-                if (!employeeExists)
-                {
-                    return BadRequest(new { message = $"Employee with personnel number {request.PersonnelNo} does not exist." });
-                }
-
                 // Check if the permission already exists
-                var existingPermission = await _userPermissionService.HasPermissionAsync(request.PersonnelNo, request.PermissionCode);
+                var existingPermission = await _userPermissionService.HasPermissionAsync(request.Username, request.PermissionCode);
                 if (existingPermission)
                 {
-                    return Conflict(new { message = $"Permission '{request.PermissionCode}' already exists for personnel number {request.PersonnelNo}." });
+                    return Conflict(new { message = $"Permission '{request.PermissionCode}' already exists for user {request.Username}." });
                 }
 
                 var userPermission = new UserPermission
                 {
-                    PersonnelNo = request.PersonnelNo,
+                    Username = request.Username,
                     PermissionCode = request.PermissionCode
                 };
 
@@ -203,16 +194,9 @@ namespace PPC.TrainingDevelopment.Api.Controllers
                     return BadRequest(ModelState);
                 }
 
-                // Validate that the employee exists
-                var employeeExists = await _employeeService.ExistsAsync(request.PersonnelNo);
-                if (!employeeExists)
-                {
-                    return BadRequest(new { message = $"Employee with personnel number {request.PersonnelNo} does not exist." });
-                }
-
                 var userPermission = new UserPermission
                 {
-                    PersonnelNo = request.PersonnelNo,
+                    Username = request.Username,
                     PermissionCode = request.PermissionCode
                 };
 

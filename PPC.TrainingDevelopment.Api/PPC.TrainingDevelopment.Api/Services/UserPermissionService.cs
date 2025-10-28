@@ -17,8 +17,7 @@ namespace PPC.TrainingDevelopment.Api.Services
         public async Task<IEnumerable<UserPermission>> GetAllAsync()
         {
             return await _context.UserPermissions
-                .Include(up => up.Employee)
-                .OrderBy(up => up.PersonnelNo)
+                .OrderBy(up => up.Username)
                 .ThenBy(up => up.PermissionCode)
                 .ToListAsync();
         }
@@ -26,15 +25,13 @@ namespace PPC.TrainingDevelopment.Api.Services
         public async Task<UserPermission?> GetByIdAsync(int permissionId)
         {
             return await _context.UserPermissions
-                .Include(up => up.Employee)
                 .FirstOrDefaultAsync(up => up.PermissionId == permissionId);
         }
 
-        public async Task<IEnumerable<UserPermission>> GetByPersonnelNoAsync(string personnelNo)
+        public async Task<IEnumerable<UserPermission>> GetByUsernameAsync(string username)
         {
             return await _context.UserPermissions
-                .Include(up => up.Employee)
-                .Where(up => up.PersonnelNo == personnelNo)
+                .Where(up => up.Username == username)
                 .OrderBy(up => up.PermissionCode)
                 .ToListAsync();
         }
@@ -42,9 +39,8 @@ namespace PPC.TrainingDevelopment.Api.Services
         public async Task<IEnumerable<UserPermission>> GetByPermissionCodeAsync(string permissionCode)
         {
             return await _context.UserPermissions
-                .Include(up => up.Employee)
                 .Where(up => up.PermissionCode == permissionCode)
-                .OrderBy(up => up.PersonnelNo)
+                .OrderBy(up => up.Username)
                 .ToListAsync();
         }
 
@@ -54,7 +50,7 @@ namespace PPC.TrainingDevelopment.Api.Services
             _context.UserPermissions.Add(userPermission);
             await _context.SaveChangesAsync();
 
-            // Return the created entity with included Employee data
+            // Return the created entity
             return await GetByIdAsync(userPermission.PermissionId) ?? userPermission;
         }
 
@@ -66,14 +62,14 @@ namespace PPC.TrainingDevelopment.Api.Services
                 return null;
             }
 
-            existingPermission.PersonnelNo = userPermission.PersonnelNo;
+            existingPermission.Username = userPermission.Username;
             existingPermission.PermissionCode = userPermission.PermissionCode;
             // Note: CreatedDate should not be updated
 
             _context.UserPermissions.Update(existingPermission);
             await _context.SaveChangesAsync();
 
-            // Return the updated entity with included Employee data
+            // Return the updated entity
             return await GetByIdAsync(permissionId);
         }
 
@@ -95,10 +91,10 @@ namespace PPC.TrainingDevelopment.Api.Services
             return await _context.UserPermissions.AnyAsync(up => up.PermissionId == permissionId);
         }
 
-        public async Task<bool> HasPermissionAsync(string personnelNo, string permissionCode)
+        public async Task<bool> HasPermissionAsync(string username, string permissionCode)
         {
             return await _context.UserPermissions
-                .AnyAsync(up => up.PersonnelNo == personnelNo && up.PermissionCode == permissionCode);
+                .AnyAsync(up => up.Username == username && up.PermissionCode == permissionCode);
         }
 
         public async Task<IEnumerable<UserPermission>> SearchAsync(string searchTerm)
@@ -106,13 +102,9 @@ namespace PPC.TrainingDevelopment.Api.Services
             var lowerSearchTerm = searchTerm.ToLower();
 
             return await _context.UserPermissions
-                .Include(up => up.Employee)
-                .Where(up => up.PersonnelNo.ToLower().Contains(lowerSearchTerm) ||
-                           up.PermissionCode.ToLower().Contains(lowerSearchTerm) ||
-                           (up.Employee != null &&
-                            (up.Employee.FirstName.ToLower().Contains(lowerSearchTerm) ||
-                             up.Employee.LastName.ToLower().Contains(lowerSearchTerm))))
-                .OrderBy(up => up.PersonnelNo)
+                .Where(up => up.Username.ToLower().Contains(lowerSearchTerm) ||
+                           up.PermissionCode.ToLower().Contains(lowerSearchTerm))
+                .OrderBy(up => up.Username)
                 .ThenBy(up => up.PermissionCode)
                 .ToListAsync();
         }

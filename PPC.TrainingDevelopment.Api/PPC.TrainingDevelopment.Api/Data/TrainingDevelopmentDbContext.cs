@@ -228,20 +228,14 @@ namespace PPC.TrainingDevelopment.Api.Data
                   {
                         entity.HasKey(e => e.PermissionId);
                         entity.Property(e => e.PermissionId).ValueGeneratedOnAdd();
-                        entity.Property(e => e.PersonnelNo).IsRequired().HasMaxLength(20);
+                        entity.Property(e => e.Username).IsRequired().HasMaxLength(100);
                         entity.Property(e => e.PermissionCode).IsRequired().HasMaxLength(100);
                         entity.Property(e => e.CreatedDate).IsRequired().HasDefaultValueSql("GETDATE()");
 
-                        // Configure foreign key relationship
-                        entity.HasOne(e => e.Employee)
-                              .WithMany()
-                              .HasForeignKey(e => e.PersonnelNo)
-                              .OnDelete(DeleteBehavior.Cascade);
-
                         // Add indexes for better query performance
-                        entity.HasIndex(e => e.PersonnelNo);
+                        entity.HasIndex(e => e.Username);
                         entity.HasIndex(e => e.PermissionCode);
-                        entity.HasIndex(e => new { e.PersonnelNo, e.PermissionCode }).IsUnique();
+                        entity.HasIndex(e => new { e.Username, e.PermissionCode }).IsUnique();
                         entity.HasIndex(e => e.CreatedDate);
                   });
             }

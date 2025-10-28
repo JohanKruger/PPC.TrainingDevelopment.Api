@@ -1,8 +1,6 @@
 # UserPermissions Interface Integration Guide
 
-## Overview
-
-This document provides the interface specification for integrating with the UserPermissions API endpoints for frontend development.
+This guide provides comprehensive information for integrating with the UserPermissions API endpoints in your frontend applications.
 
 ## Data Model
 
@@ -11,17 +9,9 @@ This document provides the interface specification for integrating with the User
 ```json
 {
   "permissionId": 1,
-  "personnelNo": "string (max 20 chars)",
-  "permissionCode": "string (max 100 chars)",
-  "createdDate": "2024-10-28T10:30:00Z",
-  "employee": {
-    "personnelNumber": "string",
-    "firstName": "string",
-    "lastName": "string",
-    "knownName": "string",
-    "jobTitle": "string",
-    "site": "string"
-  }
+  "username": "john.doe",
+  "permissionCode": "READ_EMPLOYEES",
+  "createdDate": "2024-10-28T10:30:00Z"
 }
 ```
 
@@ -30,25 +20,16 @@ This document provides the interface specification for integrating with the User
 | Property         | Type     | Required             | Description                                           |
 | ---------------- | -------- | -------------------- | ----------------------------------------------------- |
 | `permissionId`   | integer  | Yes (auto-generated) | Unique identifier for the permission                  |
-| `personnelNo`    | string   | Yes                  | Employee personnel number (max 20 characters)         |
+| `username`       | string   | Yes                  | Username (max 100 characters)                         |
 | `permissionCode` | string   | Yes                  | Code representing the permission (max 100 characters) |
 | `createdDate`    | datetime | Yes (auto-generated) | Timestamp when the permission was created             |
-| `employee`       | Employee | No                   | Employee object with basic information                |
 
 ## API Endpoints
 
 ### Base URL
 
 ```
-/api/UserPermission
-```
-
-### Authentication
-
-All endpoints require authorization. Include JWT token in the Authorization header:
-
-```
-Authorization: Bearer {your-jwt-token}
+https://localhost:7257/api/UserPermission
 ```
 
 ### Endpoints
@@ -59,7 +40,7 @@ Authorization: Bearer {your-jwt-token}
 GET /api/UserPermission
 ```
 
-**Response:** Array of UserPermission objects with employee details
+**Response:** Array of UserPermission objects
 
 #### 2. Get User Permission by ID
 
@@ -73,17 +54,17 @@ GET /api/UserPermission/{id}
 
 **Response:** Single UserPermission object
 
-#### 3. Get User Permissions by Personnel Number
+#### 3. Get User Permissions by Username
 
 ```http
-GET /api/UserPermission/personnel/{personnelNo}
+GET /api/UserPermission/username/{username}
 ```
 
 **Parameters:**
 
-- `personnelNo` (string) - The employee personnel number
+- `username` (string) - The username
 
-**Response:** Array of UserPermission objects for the specified employee
+**Response:** Array of UserPermission objects for the specified user
 
 #### 4. Get User Permissions by Permission Code
 
@@ -97,15 +78,15 @@ GET /api/UserPermission/permission-code/{permissionCode}
 
 **Response:** Array of UserPermission objects with the specified permission code
 
-#### 5. Check if Personnel Has Permission
+#### 5. Check if User Has Permission
 
 ```http
-GET /api/UserPermission/check/{personnelNo}/{permissionCode}
+GET /api/UserPermission/check/{username}/{permissionCode}
 ```
 
 **Parameters:**
 
-- `personnelNo` (string) - The employee personnel number
+- `username` (string) - The username
 - `permissionCode` (string) - The permission code to check
 
 **Response:**
@@ -124,7 +105,7 @@ GET /api/UserPermission/search?searchTerm={term}
 
 **Query Parameters:**
 
-- `searchTerm` (string) - Search term (searches personnel number, permission code, employee name)
+- `searchTerm` (string) - Search term (searches username and permission code)
 
 **Response:** Array of matching UserPermission objects
 
@@ -138,8 +119,8 @@ POST /api/UserPermission
 
 ```json
 {
-  "personnelNo": "string (required, max 20 chars)",
-  "permissionCode": "string (required, max 100 chars)"
+  "username": "john.doe",
+  "permissionCode": "READ_EMPLOYEES"
 }
 ```
 
@@ -147,8 +128,7 @@ POST /api/UserPermission
 
 **Error Scenarios:**
 
-- `400 Bad Request` - Employee does not exist
-- `409 Conflict` - Permission already exists for this employee
+- `409 Conflict` - Permission already exists for this user
 
 #### 8. Update User Permission
 
@@ -164,8 +144,8 @@ PUT /api/UserPermission/{id}
 
 ```json
 {
-  "personnelNo": "string (required, max 20 chars)",
-  "permissionCode": "string (required, max 100 chars)"
+  "username": "john.doe",
+  "permissionCode": "WRITE_EMPLOYEES"
 }
 ```
 
@@ -181,13 +161,7 @@ DELETE /api/UserPermission/{id}
 
 - `id` (integer) - The permission ID to delete
 
-**Response:** Success message
-
-```json
-{
-  "message": "User permission deleted successfully."
-}
-```
+**Response:** Success message with status 200
 
 ## Frontend Integration Examples
 
@@ -196,28 +170,18 @@ DELETE /api/UserPermission/{id}
 ```typescript
 interface UserPermission {
   permissionId: number;
-  personnelNo: string;
+  username: string;
   permissionCode: string;
   createdDate: string;
-  employee?: Employee;
-}
-
-interface Employee {
-  personnelNumber: string;
-  firstName: string;
-  lastName: string;
-  knownName?: string;
-  jobTitle?: string;
-  site?: string;
 }
 
 interface CreateUserPermissionRequest {
-  personnelNo: string;
+  username: string;
   permissionCode: string;
 }
 
 interface UpdateUserPermissionRequest {
-  personnelNo: string;
+  username: string;
   permissionCode: string;
 }
 
@@ -228,10 +192,10 @@ interface PermissionCheckResponse {
 
 ### Sample API Calls
 
-#### Get all permissions for a specific employee:
+#### Get all permissions for a specific user:
 
 ```javascript
-const response = await fetch("/api/UserPermission/personnel/EMP001", {
+const response = await fetch("/api/UserPermission/username/john.doe", {
   headers: {
     Authorization: `Bearer ${token}`,
     "Content-Type": "application/json",
@@ -240,11 +204,11 @@ const response = await fetch("/api/UserPermission/personnel/EMP001", {
 const permissions = await response.json();
 ```
 
-#### Check if employee has specific permission:
+#### Check if user has specific permission:
 
 ```javascript
 const response = await fetch(
-  "/api/UserPermission/check/EMP001/READ_EMPLOYEES",
+  "/api/UserPermission/check/john.doe/READ_EMPLOYEES",
   {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -260,7 +224,7 @@ const hasPermission = result.hasPermission;
 
 ```javascript
 const newPermission = {
-  personnelNo: "EMP001",
+  username: "john.doe",
   permissionCode: "READ_EMPLOYEES",
 };
 
@@ -310,7 +274,7 @@ const adminUsers = await response.json();
 
 ```javascript
 const updatedPermission = {
-  personnelNo: "EMP001",
+  username: "john.doe",
   permissionCode: "WRITE_EMPLOYEES",
 };
 
@@ -338,53 +302,16 @@ const response = await fetch("/api/UserPermission/1", {
 const result = await response.json();
 ```
 
-## Common Permission Codes
-
-While permission codes are free-form strings, here are suggested standard codes for consistency:
-
-### Employee Management
-
-- `READ_EMPLOYEES` - View employee information
-- `WRITE_EMPLOYEES` - Create/update employee information
-- `DELETE_EMPLOYEES` - Delete employee records
-
-### Training Management
-
-- `READ_TRAINING_EVENTS` - View training events
-- `WRITE_TRAINING_EVENTS` - Create/update training events
-- `DELETE_TRAINING_EVENTS` - Delete training events
-- `READ_TRAINING_RECORDS` - View training records
-- `WRITE_TRAINING_RECORDS` - Create/update training records
-
-### Reporting
-
-- `READ_REPORTS` - View reports
-- `GENERATE_REPORTS` - Generate custom reports
-- `EXPORT_DATA` - Export data to external formats
-
-### Administration
-
-- `ADMIN_ACCESS` - Full administrative access
-- `USER_MANAGEMENT` - Manage user permissions
-- `SYSTEM_CONFIG` - Configure system settings
-- `AUDIT_LOGS` - View audit logs
-
-### Lookup Management
-
-- `READ_LOOKUPS` - View lookup values
-- `WRITE_LOOKUPS` - Create/update lookup values
-- `DELETE_LOOKUPS` - Delete lookup values
-
 ## Error Handling
 
 All endpoints return appropriate HTTP status codes:
 
 - `200 OK` - Success
 - `201 Created` - Successfully created
-- `400 Bad Request` - Invalid request data or employee does not exist
+- `400 Bad Request` - Invalid request data
 - `401 Unauthorized` - Missing or invalid authorization
 - `404 Not Found` - Resource not found
-- `409 Conflict` - Permission already exists for employee
+- `409 Conflict` - Permission already exists for user
 - `500 Internal Server Error` - Server error
 
 Error responses include a message field:
@@ -398,12 +325,10 @@ Error responses include a message field:
 
 ## Business Rules
 
-- Each permission must reference a valid employee (personnelNo must exist in Employee table)
-- Personnel number and permission code combination must be unique
+- Username and permission code combination must be unique
 - CreatedDate is automatically set when creating a permission and cannot be modified
-- Permissions support cascading delete (if employee is deleted, their permissions are removed)
 - Permission codes are case-sensitive
-- Search functionality searches across personnel number, permission code, and employee names
+- Search functionality searches across username and permission code
 
 ## Frontend Implementation Tips
 
@@ -411,10 +336,10 @@ Error responses include a message field:
 
 ```javascript
 // Check multiple permissions at once
-async function checkPermissions(personnelNo, requiredPermissions) {
+async function checkPermissions(username, requiredPermissions) {
   const checks = await Promise.all(
     requiredPermissions.map((permission) =>
-      fetch(`/api/UserPermission/check/${personnelNo}/${permission}`, {
+      fetch(`/api/UserPermission/check/${username}/${permission}`, {
         headers: { Authorization: `Bearer ${token}` },
       }).then((r) => r.json())
     )
@@ -427,7 +352,7 @@ async function checkPermissions(personnelNo, requiredPermissions) {
 }
 
 // Usage in component
-const permissions = await checkPermissions("EMP001", [
+const permissions = await checkPermissions("john.doe", [
   "READ_EMPLOYEES",
   "WRITE_EMPLOYEES",
   "DELETE_EMPLOYEES",
@@ -443,22 +368,22 @@ if (permissions.WRITE_EMPLOYEES) {
 
 ```javascript
 // Get all permissions for user management interface
-async function getUserPermissions(personnelNo) {
-  const response = await fetch(`/api/UserPermission/personnel/${personnelNo}`, {
+async function getUserPermissions(username) {
+  const response = await fetch(`/api/UserPermission/username/${username}`, {
     headers: { Authorization: `Bearer ${token}` },
   });
   return await response.json();
 }
 
 // Add permission to user
-async function grantPermission(personnelNo, permissionCode) {
+async function grantPermission(username, permissionCode) {
   const response = await fetch("/api/UserPermission", {
     method: "POST",
     headers: {
       Authorization: `Bearer ${token}`,
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ personnelNo, permissionCode }),
+    body: JSON.stringify({ username, permissionCode }),
   });
 
   if (!response.ok) {
@@ -470,12 +395,57 @@ async function grantPermission(personnelNo, permissionCode) {
 }
 ```
 
-## Notes
+### Bulk Permission Operations
 
-- All string fields are required unless marked as optional
-- Maximum length constraints must be respected
-- Permission codes are case-sensitive and should follow consistent naming conventions
-- The API includes Employee navigation properties for easier frontend display
-- Search functionality is optimized with database indexes for performance
-- Unique constraint prevents duplicate permissions for the same employee
-- CreatedDate provides audit trail for permission grants
+```javascript
+// Grant multiple permissions to a user
+async function grantMultiplePermissions(username, permissionCodes) {
+  const results = await Promise.allSettled(
+    permissionCodes.map((code) => grantPermission(username, code))
+  );
+
+  const successful = results
+    .filter((r) => r.status === "fulfilled")
+    .map((r) => r.value);
+  const failed = results
+    .filter((r) => r.status === "rejected")
+    .map((r) => r.reason);
+
+  return { successful, failed };
+}
+
+// Revoke multiple permissions from a user
+async function revokeUserPermissions(username) {
+  const userPermissions = await getUserPermissions(username);
+
+  const results = await Promise.allSettled(
+    userPermissions.map((permission) =>
+      fetch(`/api/UserPermission/${permission.permissionId}`, {
+        method: "DELETE",
+        headers: { Authorization: `Bearer ${token}` },
+      })
+    )
+  );
+
+  return results;
+}
+```
+
+## Authentication Requirements
+
+All API endpoints require JWT authentication. Ensure that your requests include the authorization header:
+
+```javascript
+const headers = {
+  Authorization: `Bearer ${jwtToken}`,
+  "Content-Type": "application/json",
+};
+```
+
+## Rate Limiting
+
+Be mindful of API rate limits when making bulk operations. Consider implementing:
+
+- Request batching
+- Retry logic with exponential backoff
+- User feedback for long-running operations

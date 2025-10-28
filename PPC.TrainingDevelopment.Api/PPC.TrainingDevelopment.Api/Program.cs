@@ -90,6 +90,7 @@ namespace PPC.TrainingDevelopment.Api
             builder.Services.AddScoped<ITrainingRecordEventService, TrainingRecordEventService>();
             builder.Services.AddScoped<IAuditLogService, AuditLogService>();
             builder.Services.AddScoped<IUserPermissionService, UserPermissionService>();
+            builder.Services.AddScoped<IReportsService, ReportsService>();
             builder.Services.AddScoped<DataSeedingService>();
 
             // Add JWT Authentication

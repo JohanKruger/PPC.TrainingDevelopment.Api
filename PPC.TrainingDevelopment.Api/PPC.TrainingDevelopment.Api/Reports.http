@@ -1,0 +1,71 @@
+### Reports API Testing
+
+# Variables
+@baseUrl = https://localhost:7043/api
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ0ZXN0dXNlciIsImp0aSI6ImY1MGUzZjVhLTgwZGItNDg2ZC05NzZmLWZkZTM2MzY5NDNhNyIsImlhdCI6IjEwLzI3LzIwMjQgMjozMzo0NSBQTSIsImV4cCI6MTczMDIyNTYyNX0.bZCAZKj5Bq5mKl5zK8tR8LYcqBz0Xr3ePB8wWmE2Sls
+@contentType = application/json
+
+### Test Authentication
+POST {{baseUrl}}/Authentication/login
+Content-Type: {{contentType}}
+
+{
+  "username": "testuser",
+  "password": "testpassword"
+}
+
+### Get All Training Records for Export
+GET {{baseUrl}}/Reports/training-records/export
+Authorization: Bearer {{token}}
+
+### Get Training Records by Date Range for Export
+GET {{baseUrl}}/Reports/training-records/export/by-date?startDate=2024-01-01&endDate=2024-12-31
+Authorization: Bearer {{token}}
+
+### Get Training Records by Personnel Number for Export
+GET {{baseUrl}}/Reports/training-records/export/by-personnel/12345678
+Authorization: Bearer {{token}}
+
+### Get Training Records by Training Event ID for Export
+GET {{baseUrl}}/Reports/training-records/export/by-event/1
+Authorization: Bearer {{token}}
+
+### Get Training Records with Multiple Filters for Export
+GET {{baseUrl}}/Reports/training-records/export/filtered?startDate=2024-01-01&endDate=2024-12-31&hasEvidence=true
+Authorization: Bearer {{token}}
+
+### Get Training Records with Personnel Number Filter
+GET {{baseUrl}}/Reports/training-records/export/filtered?personnelNumber=12345678
+Authorization: Bearer {{token}}
+
+### Get Training Records with Evidence Filter Only
+GET {{baseUrl}}/Reports/training-records/export/filtered?hasEvidence=true
+Authorization: Bearer {{token}}
+
+### Download Training Records as CSV
+GET {{baseUrl}}/Reports/training-records/export/csv
+Authorization: Bearer {{token}}
+
+### Download Training Records as CSV with Date Filter
+GET {{baseUrl}}/Reports/training-records/export/csv?startDate=2024-01-01&endDate=2024-12-31
+Authorization: Bearer {{token}}
+
+### Download Training Records as CSV with All Filters
+GET {{baseUrl}}/Reports/training-records/export/csv?startDate=2024-01-01&endDate=2024-12-31&hasEvidence=true&trainingEventId=1
+Authorization: Bearer {{token}}
+
+### Download Training Records as CSV with Personnel Number
+GET {{baseUrl}}/Reports/training-records/export/csv?personnelNumber=12345678
+Authorization: Bearer {{token}}
+
+### Error Test - Invalid Date Range
+GET {{baseUrl}}/Reports/training-records/export/by-date?startDate=2024-12-31&endDate=2024-01-01
+Authorization: Bearer {{token}}
+
+### Error Test - Invalid Training Event ID
+GET {{baseUrl}}/Reports/training-records/export/by-event/0
+Authorization: Bearer {{token}}
+
+### Error Test - Empty Personnel Number
+GET {{baseUrl}}/Reports/training-records/export/by-personnel/
+Authorization: Bearer {{token}}

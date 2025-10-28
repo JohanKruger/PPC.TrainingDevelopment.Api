@@ -2,31 +2,30 @@
 
 ## Overview
 
-The User Permissions API provides endpoints to manage user permissions within the Training Development system. This API allows you to create, read, update, and delete permission assignments for employees.
+The User Permissions API provides endpoints to manage user permissions within the Training Development system. This API allows you to create, read, update, and delete permission assignments for users.
 
 ## Entity Structure
 
 ### UserPermission
 
-| Field          | Type     | Description                                         |
-| -------------- | -------- | --------------------------------------------------- |
-| PermissionId   | int      | Unique identifier (Primary Key)                     |
-| PersonnelNo    | string   | Employee personnel number (Foreign Key to Employee) |
-| PermissionCode | string   | Code representing the permission                    |
-| CreatedDate    | DateTime | Timestamp when permission was granted               |
+| Field          | Type     | Description                           |
+| -------------- | -------- | ------------------------------------- |
+| PermissionId   | int      | Unique identifier (Primary Key)       |
+| Username       | string   | Username (max 100 characters)         |
+| PermissionCode | string   | Code representing the permission      |
+| CreatedDate    | DateTime | Timestamp when permission was granted |
 
 ## Business Rules
 
-- Each permission must reference a valid employee (PersonnelNo must exist in Employee table)
-- Personnel number and permission code combination must be unique
+- Username and permission code combination must be unique
 - CreatedDate is automatically set when creating a permission
-- Supports cascading delete (if employee is deleted, their permissions are removed)
+- Permission codes are case-sensitive
 
 ## API Endpoints
 
 ### GET /api/UserPermission
 
-Get all user permissions with employee details included.
+Get all user permissions.
 
 **Response:**
 
@@ -34,14 +33,9 @@ Get all user permissions with employee details included.
 [
   {
     "permissionId": 1,
-    "personnelNo": "EMP001",
+    "username": "john.doe",
     "permissionCode": "READ_EMPLOYEES",
-    "createdDate": "2024-10-28T10:30:00Z",
-    "employee": {
-      "personnelNumber": "EMP001",
-      "firstName": "John",
-      "lastName": "Doe"
-    }
+    "createdDate": "2024-10-28T10:30:00Z"
   }
 ]
 ```
@@ -56,13 +50,13 @@ Get a specific user permission by ID.
 
 **Response:** Single UserPermission object or 404 if not found
 
-### GET /api/UserPermission/personnel/{personnelNo}
+### GET /api/UserPermission/username/{username}
 
-Get all permissions for a specific employee.
+Get all permissions for a specific user.
 
 **Parameters:**
 
-- `personnelNo` (string): Employee personnel number
+- `username` (string): Username
 
 **Response:** Array of UserPermission objects
 
@@ -76,13 +70,13 @@ Get all users who have a specific permission.
 
 **Response:** Array of UserPermission objects
 
-### GET /api/UserPermission/check/{personnelNo}/{permissionCode}
+### GET /api/UserPermission/check/{username}/{permissionCode}
 
-Check if a specific employee has a specific permission.
+Check if a specific user has a specific permission.
 
 **Parameters:**
 
-- `personnelNo` (string): Employee personnel number
+- `username` (string): Username
 - `permissionCode` (string): Permission code to check
 
 **Response:**
@@ -95,7 +89,7 @@ Check if a specific employee has a specific permission.
 
 ### GET /api/UserPermission/search?searchTerm={term}
 
-Search permissions by personnel number, permission code, or employee name.
+Search permissions by username or permission code.
 
 **Query Parameters:**
 
@@ -111,7 +105,7 @@ Create a new user permission.
 
 ```json
 {
-  "personnelNo": "EMP001",
+  "username": "john.doe",
   "permissionCode": "READ_EMPLOYEES"
 }
 ```
@@ -120,8 +114,7 @@ Create a new user permission.
 
 **Error Scenarios:**
 
-- 400: Employee does not exist
-- 409: Permission already exists for this employee
+- 409: Permission already exists for this user
 
 ### PUT /api/UserPermission/{id}
 
@@ -135,7 +128,7 @@ Update an existing user permission.
 
 ```json
 {
-  "personnelNo": "EMP001",
+  "username": "john.doe",
   "permissionCode": "WRITE_EMPLOYEES"
 }
 ```
@@ -191,37 +184,37 @@ Authorization: Bearer {your-jwt-token}
 The UserPermissions table includes the following indexes for optimal performance:
 
 - Primary key on PermissionId
-- Index on PersonnelNo
+- Index on Username
 - Index on PermissionCode
-- Unique composite index on (PersonnelNo, PermissionCode)
+- Unique composite index on (Username, PermissionCode)
 - Index on CreatedDate
 
 ## Usage Examples
 
-### Grant admin access to an employee
+### Grant admin access to a user
 
 ```http
 POST /api/UserPermission
 {
-  "personnelNo": "EMP001",
+  "username": "john.doe",
   "permissionCode": "ADMIN_ACCESS"
 }
 ```
 
-### Check if employee can read reports
+### Check if user can read reports
 
 ```http
-GET /api/UserPermission/check/EMP001/READ_REPORTS
+GET /api/UserPermission/check/john.doe/READ_REPORTS
 ```
 
-### Get all employees with admin access
+### Get all users with admin access
 
 ```http
 GET /api/UserPermission/permission-code/ADMIN_ACCESS
 ```
 
-### Search for permissions related to a specific employee
+### Search for permissions related to a specific user
 
 ```http
-GET /api/UserPermission/search?searchTerm=EMP001
+GET /api/UserPermission/search?searchTerm=john.doe
 ```

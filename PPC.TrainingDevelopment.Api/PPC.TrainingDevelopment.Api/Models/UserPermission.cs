@@ -10,8 +10,8 @@ namespace PPC.TrainingDevelopment.Api.Models
         public int PermissionId { get; set; }
 
         [Required]
-        [MaxLength(20)]
-        public string PersonnelNo { get; set; } = string.Empty;
+        [MaxLength(100)]
+        public string Username { get; set; } = string.Empty;
 
         [Required]
         [MaxLength(100)]
@@ -19,9 +19,5 @@ namespace PPC.TrainingDevelopment.Api.Models
 
         [Required]
         public DateTime CreatedDate { get; set; } = DateTime.Now;
-
-        // Navigation property
-        [ForeignKey("PersonnelNo")]
-        public virtual Employee? Employee { get; set; }
     }
 }
