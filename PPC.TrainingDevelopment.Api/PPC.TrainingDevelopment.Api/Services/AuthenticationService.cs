@@ -5,6 +5,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
+using PPC.TrainingDevelopment.Api.Models;
 
 
 namespace PPC.TrainingDevelopment.Api.Services
@@ -12,13 +13,15 @@ namespace PPC.TrainingDevelopment.Api.Services
     public class AuthenticationService : IAuthenticationService
     {
         private readonly IConfiguration _configuration;
+        private readonly IUserPermissionService _userPermissionService;
 
-        public AuthenticationService(IConfiguration configuration)
+        public AuthenticationService(IConfiguration configuration, IUserPermissionService userPermissionService)
         {
             _configuration = configuration;
+            _userPermissionService = userPermissionService;
         }
 
-        public Task<string?> LoginAsync(string username, string password)
+        public async Task<string?> LoginAsync(string username, string password)
         {
             try
             {
@@ -31,17 +34,49 @@ namespace PPC.TrainingDevelopment.Api.Services
 
                 if (isValid)
                 {
+                    // Check if user has permissions, if not add default permissions
+                    await EnsureUserHasDefaultPermissions(username);
+
                     // Generate JWT token
                     var token = GenerateJwtToken(username);
-                    return Task.FromResult<string?>(token);
+                    return token;
                 }
 
-                return Task.FromResult<string?>(null);
+                return null;
             }
             catch (Exception)
             {
                 // Log exception here if needed
-                return Task.FromResult<string?>(null);
+                return null;
+            }
+        }
+
+        private async Task EnsureUserHasDefaultPermissions(string username)
+        {
+            // Check if user has any permissions
+            var existingPermissions = await _userPermissionService.GetByUsernameAsync(username);
+
+            if (!existingPermissions.Any())
+            {
+                // Add default permissions
+                var defaultPermissions = new[]
+                {
+                    "EDIT_ADMIN_DEP_COST",
+                    "EDIT_TRAINERS_COST",
+                    "EXPORT_REPORT"
+                };
+
+                foreach (var permissionCode in defaultPermissions)
+                {
+                    var userPermission = new UserPermission
+                    {
+                        Username = username,
+                        PermissionCode = permissionCode,
+                        CreatedDate = DateTime.Now
+                    };
+
+                    await _userPermissionService.CreateAsync(userPermission);
+                }
             }
         }
 
