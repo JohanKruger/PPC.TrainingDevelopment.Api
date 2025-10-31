@@ -226,7 +226,7 @@ namespace PPC.TrainingDevelopment.Api.Controllers
                           "PersonnelNumber,EmployeeFirstName,EmployeeLastName,EmployeeKnownName,EmployeeInitials," +
                           "EmployeeRace,EmployeeGender,EmployeeDisability,EmployeeEELevel,EmployeeEECategory," +
                           "EmployeeJobTitle,EmployeeJobGrade,EmployeeIDNumber,EmployeeSite,EmployeeHighestQualification," +
-                          "EmployeeNotes,NonEmployeeIDNumber");
+                          "EmployeeNotes");
 
             // CSV Data
             foreach (var report in reports)
@@ -239,17 +239,17 @@ namespace PPC.TrainingDevelopment.Api.Controllers
                               $"{report.Minutes}," +
                               $"{report.Evidence}," +
                               $"\"{EscapeCsvValue(report.ServiceProviderExternal)}\"," +
-                              $"{report.CostTrainingMaterials}," +
-                              $"{report.CostTrainers}," +
-                              $"{report.CostTrainingFacilities}," +
-                              $"{report.ScholarshipsBursaries}," +
-                              $"{report.CourseFees}," +
-                              $"{report.Accommodation}," +
-                              $"{report.Travel}," +
-                              $"{report.Meal}," +
-                              $"{report.AdministrationCosts}," +
-                              $"{report.EquipmentDepreciation}," +
-                              $"{report.TotalCosts}," +
+                              $"{FormatDecimal(report.CostTrainingMaterials)}," +
+                              $"{FormatDecimal(report.CostTrainers)}," +
+                              $"{FormatDecimal(report.CostTrainingFacilities)}," +
+                              $"{FormatDecimal(report.ScholarshipsBursaries)}," +
+                              $"{FormatDecimal(report.CourseFees)}," +
+                              $"{FormatDecimal(report.Accommodation)}," +
+                              $"{FormatDecimal(report.Travel)}," +
+                              $"{FormatDecimal(report.Meal)}," +
+                              $"{FormatDecimal(report.AdministrationCosts)}," +
+                              $"{FormatDecimal(report.EquipmentDepreciation)}," +
+                              $"{FormatDecimal(report.TotalCosts)}," +
                               $"{report.TotalDurationMinutes}," +
                               $"\"{EscapeCsvValue(report.EventType)}\"," +
                               $"\"{EscapeCsvValue(report.TrainingEventName)}\"," +
@@ -272,11 +272,25 @@ namespace PPC.TrainingDevelopment.Api.Controllers
                               $"\"{EscapeCsvValue(report.EmployeeIDNumber)}\"," +
                               $"\"{EscapeCsvValue(report.EmployeeSite)}\"," +
                               $"\"{EscapeCsvValue(report.EmployeeHighestQualification)}\"," +
-                              $"\"{EscapeCsvValue(report.EmployeeNotes)}\"," +
-                              $"\"{EscapeCsvValue(report.NonEmployeeIDNumber)}\"");
+                              $"\"{EscapeCsvValue(report.EmployeeNotes)}\"");
             }
 
             return csv.ToString();
+        }
+
+        private static string FormatDecimal(decimal? value)
+        {
+            if (value == null)
+                return string.Empty;
+
+            // Use invariant culture to ensure decimal point (.) instead of comma (,)
+            return value.Value.ToString("F2", System.Globalization.CultureInfo.InvariantCulture);
+        }
+
+        private static string FormatDecimal(decimal value)
+        {
+            // Use invariant culture to ensure decimal point (.) instead of comma (,)
+            return value.ToString("F2", System.Globalization.CultureInfo.InvariantCulture);
         }
 
         private static string EscapeCsvValue(string? value)

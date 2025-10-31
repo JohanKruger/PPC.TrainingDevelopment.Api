@@ -46,7 +46,7 @@ namespace PPC.TrainingDevelopment.Api.Middleware
                 QueryString = context.Request.QueryString.ToString(),
                 Controller = GetControllerName(context),
                 Action = GetActionName(context),
-                RequestBody = requestBody,
+                RequestBody = ShouldRemoveRequestBody(context.Request.Path) ? null : requestBody,
                 Timestamp = DateTime.UtcNow,
                 IpAddress = GetClientIpAddress(context),
                 UserAgent = context.Request.Headers["User-Agent"].ToString(),
@@ -100,6 +100,16 @@ namespace PPC.TrainingDevelopment.Api.Middleware
                 "/metrics",
                 "/favicon.ico",
                 "/api/auditlogs" // Don't audit the audit log endpoint itself
+            };
+
+            return pathsToSkip.Any(skipPath => path.StartsWith(skipPath, StringComparison.OrdinalIgnoreCase));
+        }
+
+        private static bool ShouldRemoveRequestBody(string path)
+        {
+            var pathsToSkip = new[]
+            {
+                "/api/Authentication/login"
             };
 
             return pathsToSkip.Any(skipPath => path.StartsWith(skipPath, StringComparison.OrdinalIgnoreCase));
