@@ -61,6 +61,9 @@ namespace PPC.TrainingDevelopment.Api.Models
         [Column(TypeName = "decimal(18,2)")]
         public decimal? EquipmentDepreciation { get; set; }
 
+        [Column(TypeName = "decimal(18,2)")]
+        public decimal? Salary { get; set; }
+
         // Navigation property
         [ForeignKey("TrainingEventId")]
         [JsonIgnore]
@@ -83,6 +86,7 @@ namespace PPC.TrainingDevelopment.Api.Models
             (Travel ?? 0) +
             (Meal ?? 0) +
             (AdministrationCosts ?? 0) +
-            (EquipmentDepreciation ?? 0);
+            (EquipmentDepreciation ?? 0) +
+            (Salary ?? 0);
     }
 }

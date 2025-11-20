@@ -255,7 +255,8 @@ namespace PPC.TrainingDevelopment.Api.Controllers
                     Travel = request.Travel,
                     Meal = request.Meal,
                     AdministrationCosts = request.AdministrationCosts,
-                    EquipmentDepreciation = request.EquipmentDepreciation
+                    EquipmentDepreciation = request.EquipmentDepreciation,
+                    Salary = request.Salary
                 };
 
                 var createdTrainingRecordEvent = await _trainingRecordEventService.CreateAsync(trainingRecordEvent);
@@ -307,7 +308,8 @@ namespace PPC.TrainingDevelopment.Api.Controllers
                     Travel = request.Travel,
                     Meal = request.Meal,
                     AdministrationCosts = request.AdministrationCosts,
-                    EquipmentDepreciation = request.EquipmentDepreciation
+                    EquipmentDepreciation = request.EquipmentDepreciation,
+                    Salary = request.Salary
                 };
 
                 var updatedTrainingRecordEvent = await _trainingRecordEventService.UpdateAsync(trainingRecordEventId, trainingRecordEvent);

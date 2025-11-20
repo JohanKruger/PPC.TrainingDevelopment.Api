@@ -100,13 +100,14 @@ namespace PPC.TrainingDevelopment.Api.Services
                     Travel = tre.Travel ?? 0,
                     Meal = tre.Meal ?? 0,
                     AdministrationCosts = tre.AdministrationCosts ?? 0,
-                    EquipmentDepreciation = tre.EquipmentDepreciation ?? 0
+                    EquipmentDepreciation = tre.EquipmentDepreciation ?? 0,
+                    Salary = tre.Salary ?? 0
                 })
                 .ToListAsync();
 
             return costs.Sum(c => c.CostTrainingMaterials + c.CostTrainers + c.CostTrainingFacilities +
                                  c.ScholarshipsBursaries + c.CourseFees + c.Accommodation + c.Travel +
-                                 c.Meal + c.AdministrationCosts + c.EquipmentDepreciation);
+                                 c.Meal + c.AdministrationCosts + c.EquipmentDepreciation + c.Salary);
         }
 
         public async Task<decimal> GetTotalCostsByPersonnelNumberAsync(string personnelNumber)
@@ -124,13 +125,14 @@ namespace PPC.TrainingDevelopment.Api.Services
                     Travel = tre.Travel ?? 0,
                     Meal = tre.Meal ?? 0,
                     AdministrationCosts = tre.AdministrationCosts ?? 0,
-                    EquipmentDepreciation = tre.EquipmentDepreciation ?? 0
+                    EquipmentDepreciation = tre.EquipmentDepreciation ?? 0,
+                    Salary = tre.Salary ?? 0
                 })
                 .ToListAsync();
 
             return costs.Sum(c => c.CostTrainingMaterials + c.CostTrainers + c.CostTrainingFacilities +
                                  c.ScholarshipsBursaries + c.CourseFees + c.Accommodation + c.Travel +
-                                 c.Meal + c.AdministrationCosts + c.EquipmentDepreciation);
+                                 c.Meal + c.AdministrationCosts + c.EquipmentDepreciation + c.Salary);
         }
 
         public async Task<decimal> GetTotalCostsByDateRangeAsync(DateTime startDate, DateTime endDate)
@@ -148,13 +150,14 @@ namespace PPC.TrainingDevelopment.Api.Services
                     Travel = tre.Travel ?? 0,
                     Meal = tre.Meal ?? 0,
                     AdministrationCosts = tre.AdministrationCosts ?? 0,
-                    EquipmentDepreciation = tre.EquipmentDepreciation ?? 0
+                    EquipmentDepreciation = tre.EquipmentDepreciation ?? 0,
+                    Salary = tre.Salary ?? 0
                 })
                 .ToListAsync();
 
             return costs.Sum(c => c.CostTrainingMaterials + c.CostTrainers + c.CostTrainingFacilities +
                                  c.ScholarshipsBursaries + c.CourseFees + c.Accommodation + c.Travel +
-                                 c.Meal + c.AdministrationCosts + c.EquipmentDepreciation);
+                                 c.Meal + c.AdministrationCosts + c.EquipmentDepreciation + c.Salary);
         }
 
         public async Task<TrainingRecordEvent> CreateAsync(TrainingRecordEvent trainingRecordEvent)
@@ -214,6 +217,7 @@ namespace PPC.TrainingDevelopment.Api.Services
             existingRecord.Meal = trainingRecordEvent.Meal;
             existingRecord.AdministrationCosts = trainingRecordEvent.AdministrationCosts;
             existingRecord.EquipmentDepreciation = trainingRecordEvent.EquipmentDepreciation;
+            existingRecord.Salary = trainingRecordEvent.Salary;
 
             await _context.SaveChangesAsync();
             return existingRecord;

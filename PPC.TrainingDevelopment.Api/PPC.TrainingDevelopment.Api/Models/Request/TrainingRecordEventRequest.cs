@@ -54,6 +54,9 @@ namespace PPC.TrainingDevelopment.Api.Models.Request
 
         [Range(0, double.MaxValue, ErrorMessage = "Cost must be a positive value")]
         public decimal? EquipmentDepreciation { get; set; }
+
+        [Range(0, double.MaxValue, ErrorMessage = "Cost must be a positive value")]
+        public decimal? Salary { get; set; }
     }
 
     public class UpdateTrainingRecordEventRequest
@@ -108,5 +111,8 @@ namespace PPC.TrainingDevelopment.Api.Models.Request
 
         [Range(0, double.MaxValue, ErrorMessage = "Cost must be a positive value")]
         public decimal? EquipmentDepreciation { get; set; }
+
+        [Range(0, double.MaxValue, ErrorMessage = "Cost must be a positive value")]
+        public decimal? Salary { get; set; }
     }
 }
